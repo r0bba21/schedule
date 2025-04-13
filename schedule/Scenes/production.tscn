@@ -1,0 +1,301 @@
+[gd_scene load_steps=7 format=3 uid="uid://fjeetts18p17"]
+
+[ext_resource type="Script" uid="uid://bwlal8smk7cqr" path="res://Scripts/production.gd" id="1_1814h"]
+[ext_resource type="Texture2D" uid="uid://c0webbwtl6s7j" path="res://UI_Assets/leaf-swirl.png" id="1_nh4s3"]
+[ext_resource type="Texture2D" uid="uid://ct3p0y7j6qale" path="res://UI_Assets/leaf-swirl (1).png" id="2_vltim"]
+[ext_resource type="Texture2D" uid="uid://chsbfnluovep7" path="res://UI_Assets/crystal-bars.png" id="3_1814h"]
+[ext_resource type="Texture2D" uid="uid://b7nd8urxid3mp" path="res://UI_Assets/powder.png" id="4_clqt6"]
+[ext_resource type="Texture2D" uid="uid://n4wnc0457wso" path="res://UI_Assets/padlock.png" id="6_clqt6"]
+
+[node name="Production" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1814h")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 472.0
+offset_bottom = 1056.0
+
+[node name="Stock" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 472.0
+offset_bottom = 1056.0
+alignment = 1
+
+[node name="STOCK" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 40
+text = "Your Stock:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SEEDS" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 40
+text = "Ingredients:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="seed" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Kush Seeds:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="seed2" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Purple Seeds:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="seed3" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Psuedo:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="seed4" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Cocaine Seeds:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UNFINISHED" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 40
+text = "Unfinished Product:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Kush:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish2" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Purple:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish3" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Meth:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish4" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Cocaine:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FINISHED" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 40
+text = "Unpackaged Product:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish5" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Kush:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish6" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Purple:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish7" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Meth:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish8" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Cocaine:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PACKAGED" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 40
+text = "Packaged Product:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish9" type="Label" parent="Stock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Kush:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish10" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Purple:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish11" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Meth:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unfinish12" type="Label" parent="Stock"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Cocaine:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -464.0
+offset_top = 24.0
+offset_right = 944.0
+offset_bottom = 115.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 60
+text = "Management:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Kush" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 139.0
+offset_right = 828.0
+offset_bottom = 471.0
+theme_override_icons/icon = ExtResource("1_nh4s3")
+
+[node name="Purple" type="Button" parent="."]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 139.0
+offset_right = 1184.0
+offset_bottom = 471.0
+theme_override_icons/icon = ExtResource("2_vltim")
+
+[node name="Meth" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1208.0
+offset_top = 139.0
+offset_right = 1540.0
+offset_bottom = 471.0
+theme_override_icons/icon = ExtResource("3_1814h")
+
+[node name="Cocaine" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1564.0
+offset_top = 139.0
+offset_right = 1896.0
+offset_bottom = 471.0
+theme_override_icons/icon = ExtResource("4_clqt6")
+
+[node name="Delivery" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 503.0
+offset_right = 1192.0
+offset_bottom = 835.0
+theme_override_font_sizes/font_size = 60
+text = "Deliveries"
+
+[node name="Sale" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1208.0
+offset_top = 503.0
+offset_right = 1904.0
+offset_bottom = 835.0
+theme_override_font_sizes/font_size = 60
+text = "Sales"
+
+[node name="Lock_Purple" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 139.0
+offset_right = 1192.0
+offset_bottom = 479.0
+texture = ExtResource("6_clqt6")
+
+[node name="Lock_Meth" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1208.0
+offset_top = 139.0
+offset_right = 1548.0
+offset_bottom = 479.0
+texture = ExtResource("6_clqt6")
+
+[node name="Lock_Coke" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1564.0
+offset_top = 139.0
+offset_right = 1904.0
+offset_bottom = 479.0
+texture = ExtResource("6_clqt6")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 859.0
+offset_right = 1904.0
+offset_bottom = 1056.0
+theme_override_font_sizes/font_size = 60
+text = "Research"

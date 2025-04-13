@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpsvctcfaquev"]
+
+[ext_resource type="Script" uid="uid://d0lkxidy86cs2" path="res://Scripts/lab.gd" id="1_b7lmg"]
+[ext_resource type="PackedScene" uid="uid://d2fwxk8h8of2u" path="res://CharacterController.tscn" id="1_h3xp2"]
+[ext_resource type="PackedScene" uid="uid://fjeetts18p17" path="res://Scenes/production.tscn" id="3_x8gvj"]
+[ext_resource type="PackedScene" uid="uid://5bwohuat633p" path="res://Scenes/paused.tscn" id="4_m11ee"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7lmg"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1.19916, 1.19376, 1.18748, 1)
+ground_bottom_color = Color(0.121476, 0.0998742, 0.0747807, 1)
+ground_horizon_color = Color(1.19916, 1.19376, 1.18748, 1)
+energy_multiplier = 1.4
+
+[sub_resource type="Sky" id="Sky_x8gvj"]
+sky_material = SubResource("ProceduralSkyMaterial_b7lmg")
+
+[sub_resource type="Environment" id="Environment_m11ee"]
+background_mode = 2
+sky = SubResource("Sky_x8gvj")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Lab" type="Node3D"]
+script = ExtResource("1_b7lmg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m11ee")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663727, 0, -0.0183105)
+use_collision = true
+size = Vector3(10.6089, 0.154541, 10.0991)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663727, 4.69193, -0.0183105)
+layers = 0
+use_collision = true
+size = Vector3(10.6089, 10.7598, 10.0991)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_h3xp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0912857, 0.0772705, -0.0925708)
+
+[node name="Production" parent="." instance=ExtResource("3_x8gvj")]
+visible = false
+
+[node name="Paused" parent="." instance=ExtResource("4_m11ee")]
+visible = false
+metadata/_edit_lock_ = true

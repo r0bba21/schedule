@@ -1,0 +1,10 @@
+extends Control
+
+@onready var paused: Control = $"."
+
+func _on_play_pressed() -> void:
+	paused.hide()
+	Global.in_pause = false
+
+func _on_exit_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
