@@ -1,11 +1,117 @@
-[gd_scene load_steps=7 format=3 uid="uid://fjeetts18p17"]
+[gd_scene load_steps=25 format=3 uid="uid://fjeetts18p17"]
 
 [ext_resource type="Script" uid="uid://bwlal8smk7cqr" path="res://Scripts/production.gd" id="1_1814h"]
 [ext_resource type="Texture2D" uid="uid://c0webbwtl6s7j" path="res://UI_Assets/leaf-swirl.png" id="1_nh4s3"]
+[ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="2_1rhnv"]
 [ext_resource type="Texture2D" uid="uid://ct3p0y7j6qale" path="res://UI_Assets/leaf-swirl (1).png" id="2_vltim"]
 [ext_resource type="Texture2D" uid="uid://chsbfnluovep7" path="res://UI_Assets/crystal-bars.png" id="3_1814h"]
 [ext_resource type="Texture2D" uid="uid://b7nd8urxid3mp" path="res://UI_Assets/powder.png" id="4_clqt6"]
 [ext_resource type="Texture2D" uid="uid://n4wnc0457wso" path="res://UI_Assets/padlock.png" id="6_clqt6"]
+[ext_resource type="Texture2D" uid="uid://xb8n14ohgop8" path="res://UI_Assets/cancel.png" id="7_3peat"]
+[ext_resource type="Texture2D" uid="uid://djjigyl7ppdhk" path="res://UI_Assets/truck.png" id="7_yo8xg"]
+[ext_resource type="Texture2D" uid="uid://cs74ararmdb7k" path="res://UI_Assets/click.png" id="8_27ra7"]
+[ext_resource type="Texture2D" uid="uid://dyxnvss3owhfm" path="res://UI_Assets/nuclear-waste.png" id="8_y1v57"]
+[ext_resource type="Texture2D" uid="uid://c4ue5s1s20atc" path="res://UI_Assets/shiny-purse.png" id="9_nl5nu"]
+[ext_resource type="Texture2D" uid="uid://cgkamcaeagpwj" path="res://UI_Assets/test-tube-held.png" id="11_63f7c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_350yb"]
+bg_color = Color(0.345098, 0.521569, 0.470588, 0.752941)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwwcs"]
+bg_color = Color(0.150021, 0.250595, 0.221947, 0.752941)
+border_color = Color(0.579454, 0.730309, 0.684347, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ar5"]
+bg_color = Color(0.345098, 0.521569, 0.470588, 0.752941)
+border_width_bottom = 6
+border_color = Color(0.579454, 0.730309, 0.684347, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdmqb"]
+bg_color = Color(0.345098, 0.521569, 0.470588, 0.752941)
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye64w"]
+bg_color = Color(0.345098, 0.521569, 0.470588, 0.870588)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rhnv"]
+bg_color = Color(0.134106, 0.227222, 0.200711, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bv8h7"]
+bg_color = Color(0.29094, 0.450356, 0.404564, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu05i"]
+content_margin_top = 4.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0980392, 0.172549, 0.152941, 1)
+border_color = Color(0.541829, 0.73016, 0.676319, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccf76"]
+content_margin_top = 4.0
+content_margin_bottom = 10.0
+bg_color = Color(0.301526, 0.457248, 0.413988, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.541829, 0.73016, 0.676319, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qcu4"]
+content_margin_top = 4.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0992738, 0.172218, 0.152166, 1)
+border_color = Color(0.541829, 0.73016, 0.676319, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toemw"]
+content_margin_top = 4.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0980392, 0.172549, 0.152941, 1)
+border_color = Color(0.541829, 0.73016, 0.676319, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="Production" type="Control"]
 layout_mode = 3
@@ -17,12 +123,18 @@ grow_vertical = 2
 script = ExtResource("1_1814h")
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="Timers"]
+autostart = true
+
+[node name="StockPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 472.0
 offset_bottom = 1056.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_350yb")
 
 [node name="Stock" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -32,171 +144,201 @@ offset_right = 472.0
 offset_bottom = 1056.0
 alignment = 1
 
-[node name="STOCK" type="Label" parent="Stock"]
+[node name="MONEY" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_constants/outline_size = 12
+theme_override_colors/font_color = Color(0.568468, 0.965765, 0.415137, 1)
+theme_override_constants/outline_size = 16
 theme_override_constants/shadow_outline_size = 16
-theme_override_font_sizes/font_size = 40
-text = "Your Stock:"
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 60
+text = "$1000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SEEDS" type="Label" parent="Stock"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
 theme_override_constants/outline_size = 12
 theme_override_constants/shadow_outline_size = 16
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
 text = "Ingredients:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="seed" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Kush Seeds:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="seed2" type="Label" parent="Stock"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Purple Seeds:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="seed3" type="Label" parent="Stock"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Psuedo:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="seed4" type="Label" parent="Stock"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Cocaine Seeds:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UNFINISHED" type="Label" parent="Stock"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
 theme_override_constants/outline_size = 12
 theme_override_constants/shadow_outline_size = 16
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
 text = "Unfinished Product:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="unfinish" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Kush:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="unfinish2" type="Label" parent="Stock"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Purple:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="unfinish3" type="Label" parent="Stock"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Meth:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="unfinish4" type="Label" parent="Stock"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Cocaine:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FINISHED" type="Label" parent="Stock"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
 theme_override_constants/outline_size = 12
 theme_override_constants/shadow_outline_size = 16
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
 text = "Unpackaged Product:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish5" type="Label" parent="Stock"]
+[node name="finish" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Kush:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish6" type="Label" parent="Stock"]
-visible = false
+[node name="finish2" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Purple:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish7" type="Label" parent="Stock"]
-visible = false
+[node name="finish3" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Meth:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish8" type="Label" parent="Stock"]
-visible = false
+[node name="finish4" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Cocaine:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PACKAGED" type="Label" parent="Stock"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
 theme_override_constants/outline_size = 12
 theme_override_constants/shadow_outline_size = 16
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
 text = "Packaged Product:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish9" type="Label" parent="Stock"]
+[node name="packed" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Kush:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish10" type="Label" parent="Stock"]
-visible = false
+[node name="packed2" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Purple:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish11" type="Label" parent="Stock"]
-visible = false
+[node name="packed3" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Meth:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="unfinish12" type="Label" parent="Stock"]
-visible = false
+[node name="packed4" type="Label" parent="Stock"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 28
 text = "Cocaine:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -208,11 +350,12 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -464.0
 offset_top = 24.0
-offset_right = 944.0
+offset_right = 588.0
 offset_bottom = 115.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 70
 text = "Management:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -224,6 +367,11 @@ offset_top = 139.0
 offset_right = 828.0
 offset_bottom = 471.0
 theme_override_icons/icon = ExtResource("1_nh4s3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 
 [node name="Purple" type="Button" parent="."]
 layout_mode = 0
@@ -232,6 +380,11 @@ offset_top = 139.0
 offset_right = 1184.0
 offset_bottom = 471.0
 theme_override_icons/icon = ExtResource("2_vltim")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 
 [node name="Meth" type="Button" parent="."]
 layout_mode = 0
@@ -240,6 +393,11 @@ offset_top = 139.0
 offset_right = 1540.0
 offset_bottom = 471.0
 theme_override_icons/icon = ExtResource("3_1814h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 
 [node name="Cocaine" type="Button" parent="."]
 layout_mode = 0
@@ -248,24 +406,64 @@ offset_top = 139.0
 offset_right = 1896.0
 offset_bottom = 471.0
 theme_override_icons/icon = ExtResource("4_clqt6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 
 [node name="Delivery" type="Button" parent="."]
 layout_mode = 0
 offset_left = 496.0
 offset_top = 503.0
 offset_right = 1192.0
-offset_bottom = 835.0
-theme_override_font_sizes/font_size = 60
+offset_bottom = 657.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 70
+theme_override_icons/icon = ExtResource("7_yo8xg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 text = "Deliveries"
+icon_alignment = 2
+
+[node name="Delivery2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 681.0
+offset_right = 1192.0
+offset_bottom = 835.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 70
+theme_override_icons/icon = ExtResource("8_y1v57")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
+text = "Upgrade Lab"
+icon_alignment = 2
 
 [node name="Sale" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1208.0
 offset_top = 503.0
-offset_right = 1904.0
-offset_bottom = 835.0
-theme_override_font_sizes/font_size = 60
-text = "Sales"
+offset_right = 1896.0
+offset_bottom = 837.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 70
+theme_override_icons/icon = ExtResource("9_nl5nu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
+text = "Sell Product"
 
 [node name="Lock_Purple" type="TextureRect" parent="."]
 layout_mode = 0
@@ -295,7 +493,384 @@ texture = ExtResource("6_clqt6")
 layout_mode = 0
 offset_left = 496.0
 offset_top = 859.0
-offset_right = 1904.0
+offset_right = 1896.0
 offset_bottom = 1056.0
-theme_override_font_sizes/font_size = 60
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 70
+theme_override_icons/icon = ExtResource("11_63f7c")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 text = "Research"
+
+[node name="Time" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -356.0
+offset_bottom = 115.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fdmqb")
+
+[node name="Clock" type="Label" parent="Time"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 60
+text = "12:00"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Day" type="Label" parent="Time"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 35
+text = "Day 1:"
+horizontal_alignment = 1
+
+[node name="Kush_Manage" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 139.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ye64w")
+
+[node name="Title" type="Label" parent="Kush_Manage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 80
+text = "Kush:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Kush_Manage"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 92.0
+theme_override_icons/icon = ExtResource("7_3peat")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv8h7")
+
+[node name="Manage" type="VBoxContainer" parent="Kush_Manage"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 100.0
+offset_right = 460.0
+offset_bottom = -100.0
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title2" type="Label" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Enter Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Green_Input" type="LineEdit" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_eu05i")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccf76")
+text = "1"
+placeholder_text = "1"
+alignment = 1
+
+[node name="Title3" type="Label" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Based on Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuySeeds" type="Button" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccf76")
+text = "Buy Seeds"
+
+[node name="BuyPots" type="Button" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccf76")
+text = "Buy Pots"
+
+[node name="PlantGreen" type="Button" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccf76")
+text = "Plant Seeds"
+
+[node name="Title4" type="Label" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Pick Package:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PackageChoiceGreen" type="OptionButton" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccf76")
+theme_override_icons/arrow = ExtResource("8_27ra7")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Baggies"
+popup/item_0/id = 0
+popup/item_1/text = "Jars"
+popup/item_1/id = 1
+popup/item_2/text = "Bricks"
+popup/item_2/id = 2
+
+[node name="PackageGreen" type="Button" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8qcu4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccf76")
+text = "Package"
+
+[node name="Info" type="VBoxContainer" parent="Kush_Manage"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -940.0
+offset_top = 89.0
+offset_bottom = -113.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title5" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 55
+text = "Your Stats:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pots_av" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Available Pots: 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bags_av" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Baggies: 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="jars_av" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Jars: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bricks_av" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Bricks: LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="demand_green" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Demand: ~25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="seed_green_price" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Seed Price:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pot_price" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Pot Price:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sale_Menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 139.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ye64w")
+
+[node name="Title" type="Label" parent="Sale_Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 80
+text = "Sales:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exposition" type="Label" parent="Sale_Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 100.0
+offset_right = 2.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "You can only sell packaged product on the market and the amount you can sell depends on the demand."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Sale_Menu"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 92.0
+theme_override_icons/icon = ExtResource("7_3peat")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv8h7")
+
+[node name="Demand" type="VBoxContainer" parent="Sale_Menu"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 155.0
+offset_right = 331.0
+offset_bottom = -155.0
+grow_vertical = 2
+alignment = 1
+
+[node name="Title2" type="Label" parent="Sale_Menu/Demand"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Demand:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timers/Timer" to="." method="minute"]
+[connection signal="pressed" from="Kush" to="." method="_on_kush_pressed"]
+[connection signal="pressed" from="Sale" to="." method="_on_sale_pressed"]
+[connection signal="pressed" from="Kush_Manage/Exit" to="." method="exit_ui"]
+[connection signal="text_changed" from="Kush_Manage/Manage/Green_Input" to="." method="_on_green_input_text_changed"]
+[connection signal="pressed" from="Kush_Manage/Manage/BuySeeds" to="." method="_on_buy_seeds_pressed"]
+[connection signal="pressed" from="Kush_Manage/Manage/BuyPots" to="." method="_on_buy_pots_pressed"]
+[connection signal="pressed" from="Kush_Manage/Manage/PlantGreen" to="." method="pressed_plant_green"]
+[connection signal="item_selected" from="Kush_Manage/Manage/PackageChoiceGreen" to="." method="_on_package_choice_green_item_selected"]
+[connection signal="pressed" from="Kush_Manage/Manage/PackageGreen" to="." method="package_green"]
+[connection signal="pressed" from="Sale_Menu/Exit" to="." method="exit_ui"]

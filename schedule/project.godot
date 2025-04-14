@@ -26,6 +26,15 @@ window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://BLENDER/": "orange",
+"res://Scenes/": "red",
+"res://Scripts/": "gray",
+"res://UI_Assets/": "blue"
+}
+
 [input]
 
 Left={

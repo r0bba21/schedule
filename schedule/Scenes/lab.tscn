@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpsvctcfaquev"]
+[gd_scene load_steps=9 format=3 uid="uid://bpsvctcfaquev"]
 
 [ext_resource type="Script" uid="uid://d0lkxidy86cs2" path="res://Scripts/lab.gd" id="1_b7lmg"]
 [ext_resource type="PackedScene" uid="uid://d2fwxk8h8of2u" path="res://CharacterController.tscn" id="1_h3xp2"]
 [ext_resource type="PackedScene" uid="uid://fjeetts18p17" path="res://Scenes/production.tscn" id="3_x8gvj"]
 [ext_resource type="PackedScene" uid="uid://5bwohuat633p" path="res://Scenes/paused.tscn" id="4_m11ee"]
+[ext_resource type="PackedScene" uid="uid://cub1u4bvt7lgj" path="res://BLENDER/lab_ver1.blend" id="5_x8gvj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7lmg"]
 sky_top_color = Color(1, 1, 1, 1)
@@ -27,19 +28,50 @@ script = ExtResource("1_b7lmg")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_m11ee")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663727, 0, -0.0183105)
-use_collision = true
-size = Vector3(10.6089, 0.154541, 10.0991)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663727, 4.69193, -0.0183105)
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170897, 0.0400391, -0.097903)
 layers = 0
 use_collision = true
-size = Vector3(10.6089, 10.7598, 10.0991)
+size = Vector3(18.6767, 0.234619, 18.7256)
+
+[node name="InnerWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209578, 4.69193, -0.167788)
+layers = 0
+use_collision = true
+size = Vector3(17.9826, 10.7598, 17.9823)
+
+[node name="OuterWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203821, 4.69193, -0.167926)
+layers = 0
+use_collision = true
+size = Vector3(18.7254, 10.7598, 18.737)
+
+[node name="Pots" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56793, 0.48056, 0.309357)
+layers = 0
+use_collision = true
+size = Vector3(2.4812, 1.96112, 7.82574)
+
+[node name="Table" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81112, 0.9478, 10.3061)
+layers = 0
+use_collision = true
+size = Vector3(5.99481, 2.8956, 7.7283)
+
+[node name="Bed" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37261, 0.461693, 9.36586)
+layers = 0
+use_collision = true
+size = Vector3(10.6471, 1.92339, 9.60878)
+
+[node name="Shelf" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66299, 2.18777, 10.2284)
+layers = 0
+use_collision = true
+size = Vector3(4.69043, 5.37553, 7.88368)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_h3xp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0912857, 0.0772705, -0.0925708)
+transform = Transform3D(-1.38049, 0, -0.992093, 0, 1.7, 0, 0.992093, 0, -1.38049, 0.0912857, 0.0772705, -0.0925708)
 
 [node name="Production" parent="." instance=ExtResource("3_x8gvj")]
 visible = false
@@ -47,3 +79,6 @@ visible = false
 [node name="Paused" parent="." instance=ExtResource("4_m11ee")]
 visible = false
 metadata/_edit_lock_ = true
+
+[node name="lab_ver1" parent="." instance=ExtResource("5_x8gvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.174953, 0, -0.195406)

@@ -19,7 +19,15 @@ func _input(event: InputEvent) -> void: # KEYBOARD SHORTCUTS
 				production.hide()
 				Global.in_gui = false
 	if event.is_action_pressed("Escape"):
-		soundfx()
-		paused.show()
-		Global.in_pause = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		match Global.in_pause:
+			false:
+				soundfx()
+				paused.show()
+				Global.in_pause = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				Engine.time_scale = 0
+			true:
+				soundfx()
+				paused.hide()
+				Global.in_pause = false
+				Engine.time_scale = 1.0
