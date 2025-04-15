@@ -32,6 +32,7 @@ folder_colors={
 "res://BLENDER/": "orange",
 "res://Scenes/": "red",
 "res://Scripts/": "gray",
+"res://UI/": "yellow",
 "res://UI_Assets/": "blue"
 }
 

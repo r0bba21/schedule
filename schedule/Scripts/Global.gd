@@ -8,5 +8,3 @@ var in_pause:bool = false
 var purple_unlock:bool = false
 var meth_unlock:bool = false
 var coke_unlock:bool = false
-var level:int = 1
-var xp:int = 100

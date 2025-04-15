@@ -1,0 +1,54 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ww4po0qa5hof"]
+
+[ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="1_ye6o2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ttr4"]
+bg_color = Color(0.211084, 0.291939, 0.143001, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qriqv"]
+bg_color = Color(0.500794, 0.65617, 0.375135, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.709922, 0.861627, 0.592669, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye6o2"]
+bg_color = Color(0.195817, 0.272157, 0.131507, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2yoe"]
+bg_color = Color(0.709804, 0.862745, 0.592157, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_ye6o2")
+Button/styles/disabled = SubResource("StyleBoxFlat_0ttr4")
+Button/styles/hover = SubResource("StyleBoxFlat_0ttr4")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_0ttr4")
+Button/styles/normal = SubResource("StyleBoxFlat_qriqv")
+Button/styles/pressed = SubResource("StyleBoxFlat_0ttr4")
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_ye6o2")
+ProgressBar/constants/outline_size = 8
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/fonts/font = ExtResource("1_ye6o2")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ye6o2")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_f2yoe")
