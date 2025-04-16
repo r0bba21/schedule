@@ -1,0 +1,40 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bum6bqmkwtntj"]
+
+[ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="1_pgm6f"]
+[ext_resource type="StyleBox" uid="uid://fwswjtgar738" path="res://UI/purp.tres" id="2_66by1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rj1rf"]
+bg_color = Color(0.688158, 0.49819, 0.778835, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.804406, 0.670707, 0.874116, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnd3d"]
+bg_color = Color(0.686275, 0.498039, 0.780392, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[resource]
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_pgm6f")
+Button/styles/disabled = ExtResource("2_66by1")
+Button/styles/hover = ExtResource("2_66by1")
+Button/styles/hover_pressed = ExtResource("2_66by1")
+Button/styles/normal = SubResource("StyleBoxFlat_rj1rf")
+Button/styles/pressed = ExtResource("2_66by1")
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_pgm6f")
+ProgressBar/constants/outline_size = 8
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/fonts/font = ExtResource("1_pgm6f")
+ProgressBar/styles/background = ExtResource("2_66by1")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tnd3d")

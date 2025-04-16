@@ -8,7 +8,32 @@ func _process(delta: float) -> void:
 	lvl_prog.value = player_xp
 	if player_xp >= lvl_xp_cap:
 		lvlup()
+	if awaiting_sales > 0:
+		var bell: TextureRect = $Sale/BELL
+		bell.show()
+	else:
+		var bell: TextureRect = $Sale/BELL
+		bell.hide()
+	match dlv_in_prog:
+		false:
+			empty.disabled = false
+			dispatch.disabled = false
+			delivery_prog.hide()
+			inprogdlv.hide()
+			dlv_prog_two.hide()
+		true:
+			empty.disabled = true
+			dispatch.disabled = true
+			delivery_prog.show()
+			inprogdlv.show()
+			dlv_prog_two.value = delivery_prog.value
+			dlv_prog_two.max_value = delivery_prog.max_value
+			dlv_prog_two.min_value = delivery_prog.min_value
+			dlv_prog_two.show()
 
+@onready var dlv_prog_two: ProgressBar = $Delivery/DLV_prog_two
+@onready var inprogdlv: Label = $Delivery_Menu/inprogdlv
+@onready var empty: Button = $Delivery_Menu/Empty
 @onready var lock_purple: TextureRect = $Lock_Purple
 @onready var lock_meth: TextureRect = $Lock_Meth
 @onready var lock_coke: TextureRect = $Lock_Coke
@@ -82,11 +107,15 @@ func check_unlocks():
 			finish_4.show()
 			packed_4.show()
 
-func stocks_ui(): # ONLY HAS GREEN ATM
+func stocks_ui(): # Remember missing meth and coke!
 	seed.text = "Kush Seeds: " + str(green_seeds)
 	unfinish.text = "Kush: " + str(green_unfinished)
 	finish.text = "Kush: " + str(green_unpackaged)
 	packed.text = "Kush: " + str(green_packaged)
+	seed_2.text = "Purple K. Seeds: " + str(purp_seeds)
+	unfinish_2.text = "Purple Kush: " + str(purp_unfinished)
+	finish_2.text = "Purple Kush: " + str(purp_unpackaged)
+	packed_2.text = "Purple Kush: " + str(purp_packaged)
 
 @onready var kush_manage: Panel = $Kush_Manage
 @onready var sale_menu: Panel = $Sale_Menu
@@ -94,11 +123,12 @@ func stocks_ui(): # ONLY HAS GREEN ATM
 @onready var research_menu: Panel = $Research_Menu
 
 func exit_ui(): # Every panel shares
-	soundfx()
+	soundfx(2)
 	kush_manage.hide()
 	sale_menu.hide()
 	delivery_menu.hide()
 	research_menu.hide()
+	purp_manage.hide()
 
 func _suffix(input: float):
 	var formatted_value:float
@@ -118,12 +148,21 @@ func _suffix(input: float):
 	var formatted:String = str(formatted_value) + suffix
 	return formatted
 
-func soundfx(): # ADD
-	pass
+@onready var cash_sfx: AudioStreamPlayer2D = $Timers/CashSFX
+@onready var sfx: AudioStreamPlayer2D = $Timers/SFX
+@onready var notif: AudioStreamPlayer2D = $Timers/Notif
 
-# FUNDAMENTALS:
+func soundfx(input: int):
+	match input:
+		1: # Ka-Ching
+			cash_sfx.play()
+		2: # Select
+			sfx.play()
+		3: # Notification
+			notif.play()
+
 @onready var moneyL: Label = $Stock/MONEY
-@export var money:int = randi_range(125, 175)
+@export var money:int = 200
 
 # TIME:
 var minutes_as_int:int = 0
@@ -137,54 +176,68 @@ func minute():
 	if minutes_as_int >= 60:
 		minutes_as_int = 0
 		hours_as_int += 1
-	elif minutes_as_int < 10:
+		minutes = "00"
+		hour()
+	if minutes_as_int < 10 and minutes_as_int != 0:
 		minutes = "0" + str(minutes_as_int)
-	else:
+	if minutes_as_int >= 10 and minutes_as_int < 60:
 		minutes = str(minutes_as_int)
-	if minutes_as_int == 0:
-			minutes = "00"
-	if hours_as_int >= 25:
+	if hours_as_int >= 24:
 		hours_as_int = 0
 		day()
 		hours = "00"
-	else:
+	if hours_as_int == 0:
+		hours = "00"
+	if hours_as_int >= 10 and hours_as_int < 24:
 		hours = str(hours_as_int)
+	if hours_as_int < 10 and hours_as_int != 0:
+		hours = "0" + str(hours_as_int)
 	clock.text = hours + ":" + minutes
 	dayL.text = "Day " + str(days) + ":"
+
+func hour(): # Add like random events here
+	pass
 
 func day(): # Add like bills or income here
 	days += 1
 	sold_today = 0
-	green_demand = randi_range(20,40)
+	green_demand = randi_range(g_d_l,g_d_u)
+	PURP_demand = randi_range(p_d_l,p_d_u)
+	sold_today_p = 0
 
-# KUSH:
+# GREEN KUSH:
 var lower_green:int = 30
 var upper_green:int = 50
 var green_seeds:int = 10
 var green_unfinished:int = 0
-@export var green_yield:int = 6 # TEMPORARY: 1 seed = 6 unfinished
-var green_grow_time:int = randi_range(lower_green,upper_green) # TEMPORARY: 1 yield = 30-50 secs
+@export var WEED_yield:int = 6 # TEMPORARY: 1 seed = 6 unfinished
+var green_grow_time:float = randi_range(lower_green,upper_green)
 var green_unpackaged:int = 0
 var green_packaged:int = 0
 var pots:int = 4 # SHARE THESE WITH PURPLE
 var pots_inuse:int = 0 # SHARE THESE WITH PURPLE
-@export var green_demand:int = randi_range(20,40)
+var g_d_u:int = 60
+var g_d_l:int = 30
+var green_demand:int = randi_range(g_d_l,g_d_u)
 var green_action_amount:int = 1
-@export var green_seed_price:int = 84
-@export var green_sale_price:int = 27
+@export var green_seed_price:int = 75
+@export var green_sale_price:int = 30
 @onready var green_info: VBoxContainer = $Kush_Manage/Info
 
 func pressed_plant_green(): # Repeater
-	soundfx()
+	soundfx(2)
 	for i in range(green_action_amount):
 		green_grow_time = randi_range(lower_green,upper_green)
+		if fertiliser > 0:
+			green_grow_time /= randf_range(1.7,2.2)
+			fertiliser -= 1
 		plant_green()
 		refresh_green_ui()
 
 func plant_green(): # Actual function
 	if pots_inuse < pots and green_seeds > 0:
 		pots_inuse += 1
-		green_unfinished += green_yield
+		green_unfinished += WEED_yield
 		green_seeds -= 1
 		var green_planted:Timer = Timer.new()
 		green_planted.name = "green_planted_%s" % pots_inuse
@@ -211,11 +264,12 @@ func green_grown(green_planted: Timer, pbar: ProgressBar, wait_time_stored: int,
 	pbar.value = plant_data["planttime"]
 	if plant_data["planttime"] >= (wait_time_stored + 1):
 		print("Grew green")
-		green_unfinished -= green_yield
-		green_unpackaged += green_yield
+		green_unfinished -= WEED_yield
+		green_unpackaged += WEED_yield
 		pots_inuse -= 1
 		pbar.queue_free()
 		green_planted.queue_free()
+		refresh_green_ui()
 
 var green_operation:int = 1
 var baggies:int = 6
@@ -223,23 +277,23 @@ var jars:int = 0
 var brick_unlocked:bool = false
 
 func package_green():
-	var amount_packaged:int = green_action_amount
-	match green_operation:
-		1:
-			if baggies >= green_action_amount and amount_packaged <= green_unpackaged:
-				baggies -= amount_packaged
-				green_packaged += amount_packaged
-				green_unpackaged -= amount_packaged
-		2:
-			if jars > green_action_amount and (amount_packaged * 5) <= green_unpackaged:
-				jars -= amount_packaged
-				green_packaged += (amount_packaged * 5)
-				green_unpackaged -= (amount_packaged * 5)
-		3:
-			if brick_unlocked != false and (amount_packaged * 20) <= green_unpackaged:
-				jars -= amount_packaged
-				green_packaged += (amount_packaged * 20)
-				green_unpackaged -= (amount_packaged * 20)
+	for i in range(green_action_amount):
+		match green_operation:
+			1:
+				if baggies >= 1 and 1 <= green_unpackaged:
+					baggies -= 1
+					green_packaged += 1
+					green_unpackaged -= 1
+			2:
+				if jars >= 1 and 5 <= green_unpackaged:
+					jars -= 1
+					green_packaged += 5
+					green_unpackaged -= 5
+			3:
+				if brick_unlocked != false and 20 <= green_unpackaged:
+					green_packaged += 20
+					green_unpackaged -= 20
+		refresh_green_ui()
 
 @onready var pots_av: Label = $Kush_Manage/Info/pots_av
 @onready var bags_av: Label = $Kush_Manage/Info/bags_av
@@ -258,62 +312,76 @@ func refresh_green_ui():
 		false:
 			bricks_av.text = "Bricks: LOCKED"
 	demand_green.text = "Demand: ~" + str(green_demand)
-	exposition.text = "Grow your green kush here, each seed takes " +  str(lower_green) + "-" + str(upper_green) + " minutes to grow and yields " + str(green_yield) + " unpackaged kush."
+	exposition.text = "Grow your green kush here, each seed takes " +  str(lower_green) + "-" + str(upper_green) + " minutes to grow and yields " + str(WEED_yield) + " unpackaged kush."
 
 func _on_kush_pressed() -> void:
-	soundfx()
+	soundfx(2)
 	kush_manage.show()
 	refresh_green_ui()
 
 func _on_green_input_text_changed(new_text) -> void:
-	soundfx()
+	soundfx(2)
 	green_action_amount = int(new_text)
 	refresh_green_ui()
 
 func _on_package_choice_green_item_selected(index: int) -> void:
-	soundfx()
+	soundfx(2)
 	green_operation = (index + 1)
 	refresh_green_ui()
 
 # SELLING GREEN:
-var names:Array[String] = ["Robert", "Riley", "Willis", "Jason", "Magnus", "Liam", "Killian", "Abhay", "Kayley", "Joel", "Koby", "Sohan", "Arabella", "Millie", "Beau", "Alex", "Mason", "Kai", "Piyush", "Big Savage", "Jess", "Luca", "Shubh", "Jordan", "Jayden", "Finn", "Gabby", "Jack", "Madi"] 
+var names:Array[String] = ["Big Robba", "Riley", "Willis", "Jason", "Magnus", "Liam", "Killian", "Abhay", "Kayley", "Joel", "Koby", "Sohan", "Arabella", "Millie", "Beau", "Piyush", "Big Savage", "Vecchio", "Finn", "Gabby", "Madi"] 
 
 func _on_sale_pressed() -> void: # Menu opener
-	soundfx()
+	soundfx(2)
 	sale_menu.show()
 
 @onready var demand: VBoxContainer = $Sale_Menu/Demand
 @onready var sales: VBoxContainer = $Sale_Menu/Sales
-var sold_today:int
+var sold_today:int = 0
 
 func green_demanded():
+	soundfx(3)
+	var demanded:int
 	if sold_today < green_demand:
-		var button:Button = Button.new()
-		var name_picked:int = randi_range(0, names.size() - 1)
-		var min_request:int = randi_range(3,6)
-		var max_request:int = min(min_request, (green_demand - sold_today)) # Should probably make the 6 part scale
-		var demanded:int = randi_range(1, max_request)
-		var raw_price:float = demanded * green_sale_price * randf_range(0.85, 1.15)
-		var price:int = round(raw_price)
-		button.text = "%s: %dx Kush for $%d" % [names[name_picked], demanded, price]
-		button.theme = load("res://UI/sale.tres") as Theme
-		button.pressed.connect(green_sale_pressed.bind(demanded, price, button, name_picked)) # CONNECTION
-		demand.add_child(button)
+		var min_max:int = randi_range(4,7)
+		var max_request:int = min(min_max, (green_demand - sold_today))
+		demanded = randi_range(1, max_request)
 	else:
-		print("Spawn avoided: exceeded demand")
+		demanded = randi_range(1,3)
+	var button:Button = Button.new()
+	var name_picked:int = randi_range(0, names.size() - 1)
+	var raw_price:float = demanded * green_sale_price * randf_range(0.9, 1.15)
+	var price:int = round(raw_price)
+	button.text = "%s: %dx Kush for $%d" % [names[name_picked], demanded, price]
+	button.theme = load("res://UI/sale.tres") as Theme
+	var kill_switch:Timer = Timer.new()
+	kill_switch.wait_time = 15
+	add_child(kill_switch)
+	button.pressed.connect(green_sale_pressed.bind(demanded, price, button, name_picked, kill_switch)) # CONNECTION
+	demand.add_child(button)
 	green_timer_refresh()
+	awaiting_sales += 1
+	kill_switch.timeout.connect(sale_missed_G.bind(button, kill_switch))
+	kill_switch.start()
+
+func sale_missed_G(button: Button, kill_switch: Timer):
+	print("Took too long!")
+	button.queue_free()
+	kill_switch.queue_free()
+	awaiting_sales -= 1
 
 var sales_active:int = 0
 var max_sales:int = 4 # Should scale as player gets more dealers
 
-func green_sale_pressed(demanded: int, price: int, button: Button, name_picked: int) -> void:
-	soundfx()
+func green_sale_pressed(demanded: int, price: int, button: Button, name_picked: int, kill_switch: Timer) -> void:
+	soundfx(2)
 	if green_packaged >= demanded and sales_active < max_sales:
 		green_packaged -= demanded
 		sales_active += 1
 		button.disabled = true
 		button.text = "Delivering..."
-		var sale_time:int = randi_range(10,20) # Should also scale
+		var sale_time:int = randi_range(demanded * 4,demanded * 8)
 		var label:Label = Label.new()
 		label.text = names[name_picked] + ": " + str(demanded) + "x Kush"
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -333,11 +401,12 @@ func green_sale_pressed(demanded: int, price: int, button: Button, name_picked: 
 		var sale_data = {"time_done": 0}
 		timer.timeout.connect(_on_sale_timer_timeout.bind(demanded, price, button, timer, sale_time, sale_data, label, bar))
 		timer.start()
-		names.shuffle()
-		player_xp += demanded
+		player_xp += (demanded * 3)
+		awaiting_sales -= 1
+		kill_switch.queue_free()
 	else:
 		print("Insufficient kush or no demand or too many active sales")
-		button.queue_free()
+		soundfx(2)
 
 func _on_sale_timer_timeout(demanded: int, price: int, button: Button, timer: Timer, sale_time: int, sale_data: Dictionary, label: Label, bar: ProgressBar) -> void:
 	sale_data["time_done"] += 1
@@ -349,21 +418,25 @@ func _on_sale_timer_timeout(demanded: int, price: int, button: Button, timer: Ti
 		timer.queue_free()
 		label.queue_free()
 		bar.queue_free()
+		soundfx(1)
 		sales_active -= 1
 		print("Sale complete: Green")
 
 @onready var green_demand_Timer: Timer = $Timers/Green_Demand
 
 func green_timer_refresh(): # Timer is one-shot so this will change length (randomise) and then loop
-	var low:int = randi_range(25,35)
-	var high:int = randi_range(35,45)
-	# Make high and low scale later as player progresses
+	var low:int = randi_range(15,30)
+	var high:int = randi_range(30,35)
 	green_demand_Timer.wait_time = randi_range(low,high)
+	if (green_demand - sold_today) > (green_demand * .65):
+		green_demand_Timer.wait_time /= 2
+	if (green_demand - sold_today) > (green_demand * .5) and (green_demand - sold_today) < (green_demand * .65):
+		green_demand_Timer.wait_time /= 1.5
 	green_demand_Timer.start()
 
 # DELIVERIES: - Missing coke and meth
 func open_deliveries():
-	soundfx()
+	soundfx(2)
 	delivery_menu.show()
 
 var DLV_actions:int = 1
@@ -373,7 +446,7 @@ var sum:int = 0
 
 func _on_buy_seeds_pressed() -> void: # GREEN SEEDS - CART 0
 	if money >= (green_seed_price * DLV_actions) + sum:
-		soundfx()
+		soundfx(2)
 		cart[0] += DLV_actions
 		sum += (green_seed_price * DLV_actions)
 		refresh_dispatch()
@@ -382,7 +455,7 @@ func _on_buy_seeds_pressed() -> void: # GREEN SEEDS - CART 0
 
 func _on_buy_pots_pressed() -> void: # CART 1
 	if money >= (80 * DLV_actions) + sum:
-		soundfx()
+		soundfx(2)
 		cart[1] += DLV_actions
 		sum +=( 80 * DLV_actions)
 		refresh_dispatch()
@@ -391,7 +464,7 @@ func _on_buy_pots_pressed() -> void: # CART 1
 
 func buy_purp_seeds(): # CART 2
 	if money >= (purp_seed_price * DLV_actions) + sum:
-		soundfx()
+		soundfx(2)
 		cart[2] += DLV_actions
 		sum += (purp_seed_price * DLV_actions)
 		refresh_dispatch()
@@ -400,7 +473,7 @@ func buy_purp_seeds(): # CART 2
 
 func buy_fertiliser(): # CART 3
 	if money >= (120 * DLV_actions) + sum:
-		soundfx()
+		soundfx(2)
 		cart[3] += DLV_actions
 		sum += (120 * DLV_actions)
 		refresh_dispatch()
@@ -409,7 +482,7 @@ func buy_fertiliser(): # CART 3
 
 func buy_baggies(): # CART 4
 	if money >= (2 * DLV_actions) + sum:
-		soundfx()
+		soundfx(2)
 		cart[4] += DLV_actions
 		sum += (2 * DLV_actions)
 		refresh_dispatch()
@@ -418,7 +491,7 @@ func buy_baggies(): # CART 4
 
 func buy_jars(): # CART 5
 	if money >= (8 * DLV_actions) + sum:
-		soundfx()
+		soundfx(2)
 		cart[5] += DLV_actions
 		sum += (8 * DLV_actions)
 		refresh_dispatch()
@@ -434,33 +507,36 @@ func refresh_dispatch():
 	items = 0
 	for num in cart:
 		items += num
-	dispatch.text = "Dispatch - " + str(items) + " Items - $" + str(sum + 50)
+	dispatch.text = "Dispatch - " + str(items) + " Items - $" + str(sum + 15)
 
 func DISPATCH():
-	soundfx()
+	soundfx(1)
 	refresh_dispatch()
 	if dlv_in_prog != true:
-		if money >= sum + 50:
-			dlv_time = min((items * 2), 120) # Capped at 2 (ingame) hours
+		if money >= sum + 15:
+			dlv_time = min((items * 1.75), 90) # Capped at 90 minutes
 			var timer:Timer = Timer.new()
-			timer.wait_time = 1
+			timer.wait_time = 0.7
 			delivery_prog.max_value = dlv_time
 			delivery_prog.value = 0
 			timer.timeout.connect(on_dlv_timeout.bind(timer))
 			timer.one_shot = false
 			self.add_child(timer)
 			timer.start()
-			money -= (sum + 50)
+			money -= (sum + 15)
 			dlv_in_prog = true
-			player_xp += (sum / 2)
+			player_xp += (sum / 3)
 		else:
-			sum = 0
-			items = 0
-			cart = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-			print("Insufficient funds, resetting cart")
-			refresh_dispatch()
+			soundfx(3)
 	else:
 		print("Delivery in progress already")
+
+func EMPTY():
+	sum = 0
+	items = 0
+	cart = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	refresh_dispatch()
+	soundfx(2)
 
 func on_dlv_timeout(timer: Timer):
 	delivery_prog.value += 1
@@ -479,50 +555,441 @@ func on_dlv_timeout(timer: Timer):
 		jars += cart[5]
 		cart = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		refresh_dispatch()
+		refresh_green_ui()
+		refresh_purp_ui()
 
 func DLV_input(text) -> void:
-	soundfx()
+	soundfx(2)
 	DLV_actions = int(text)
 	if DLV_actions == null:
 		DLV_actions = 1
 
 # RESEARCH:
 func open_research():
-	soundfx()
+	soundfx(2)
 	research_menu.show()
 
-var player_lvl:int = 1 # 8 levels
+@export var player_lvl:int = 1 # 8 levels
 var player_xp:int = 0 # Currently from ordering deliveries and selling products
 var lvl_xp_cap:int = 400 # IN PROCESS FUNCTION
+var lvl_up_reward:int = 250
+var mix_ins_unlock:bool = false # For future reference?
 @onready var lvl_prog: ProgressBar = $Research_Menu/LVL_prog # IN PROCESS FUNCTION
 @onready var lvl_shower: Label = $Research_Menu/LVL_Shower
+@onready var packageUP: Button = $Research_Menu/LVLS/Title/ResearchsL2/Package
+@onready var mixUP: Button = $Research_Menu/LVLS/Title/ResearchsL2/Mix
+@onready var uvUP: Button = $Research_Menu/LVLS/Title/ResearchsL2/UV
+@onready var unlock_p_kushUP: Button = $"Research_Menu/LVLS/Title2/Unlock PKush"
+@onready var waltUP: Button = $Research_Menu/LVLS/Title3/ResearchsL4/Walt
+@onready var weed_yieldUP: Button = $Research_Menu/LVLS/Title3/ResearchsL4/WeedYield
+@onready var chloeUP: Button = $Research_Menu/LVLS/Title3/ResearchsL4/Chloe
+@onready var unlock_methUP: Button = $"Research_Menu/LVLS/Title4/Unlock Meth"
+@onready var ads_2UP: Button = $Research_Menu/LVLS/Title5/ResearchsL6/Ads2
+@onready var weed_staffUP: Button = $Research_Menu/LVLS/Title5/ResearchsL6/WeedStaff
+@onready var seed_priceUP: Button = $Research_Menu/LVLS/Title5/ResearchsL6/SeedPrice
+@onready var meth_staffUP: Button = $Research_Menu/LVLS/Title5/ResearchsL6/MethStaff
+@onready var unlock_cokeUP: Button = $"Research_Menu/LVLS/Title6/Unlock Coke"
+@onready var bricksUP: Button = $Research_Menu/LVLS/Title7/ResearchsL8/Bricks
+@onready var coke_staffUP: Button = $Research_Menu/LVLS/Title7/ResearchsL8/CokeStaff
+@onready var yieldUP: Button = $Research_Menu/LVLS/Title7/ResearchsL8/Yield
+@onready var adsUP: Button = $Research_Menu/LVLS/Title/ResearchsL2/Ads
+@onready var lvlupP: Panel = $LVLUP
+@onready var reward_lvl: Label = $LVLUP/Reward_LVL
+@onready var new_lvl: Label = $LVLUP/NEW_LVL
 
 func lvlup():
 	player_xp = 0
 	player_lvl += 1
 	lvl_shower.text = "YOUR LEVEL: " + str(player_lvl)
+	money += lvl_up_reward
+	new_lvl.text = str(player_lvl)
+	reward_lvl.text = "Enjoy a reward of $" + str(lvl_up_reward) + "!"
+	soundfx(3)
+	lvlupP.show()
 	lvl_checker()
 
 func lvl_checker(): # Separated so loadgame functions can use
+	lvl_shower.text = "YOUR LEVEL: " + str(player_lvl)
 	match player_lvl:
 		1:
-			pass
+			lvl_xp_cap = 400
+			lvl_up_reward = 250
 		2: # Unlock lab upgrades
-			lvl_xp_cap = 850
+			lvl_xp_cap = 700
+			lvl_up_reward = 500
 		3: # Unlock purple
 			lvl_xp_cap = 1100
+			lvl_up_reward = 500
 		4: # Unlock dealers
-			lvl_xp_cap = 1800
+			lvl_xp_cap = 1500
+			lvl_up_reward = 1000
 		5: # Unlock meth
-			lvl_xp_cap = 2300
+			lvl_xp_cap = 1900
+			lvl_up_reward = 1000
 		6: # Unlock staff
-			lvl_xp_cap = 3200
+			lvl_xp_cap = 2300
+			lvl_up_reward = 2000
 		7: # Unlock coke
-			lvl_xp_cap = 4000
+			lvl_xp_cap = 2700
+			lvl_up_reward = 2000
 		8: # Unlock bricks - FINAL LVL
 			lvl_xp_cap = 500000000
+			lvl_up_reward = 500000
+
+func exit_lvlup():
+	lvlupP.hide()
+	soundfx(2)
+
+func package_up():
+	if money >= 1000 and player_lvl >= 2:
+		green_sale_price += 5
+		soundfx(1)
+		money -= 1000
+		packageUP.disabled = true
+
+func mix_up(): # Future update: Make mix-ins an actual feature in drug growth menu
+	if money >= 1000 and player_lvl >= 2:
+		mix_ins_unlock = true
+		money -= 1000
+		soundfx(1)
+		green_sale_price += 5
+		mixUP.disabled = true
+
+func UV_up():
+	if money >= 1000 and player_lvl >= 2:
+		lower_green -= 5
+		upper_green -= 5
+		purp_lower -= 5
+		purp_higher -= 5
+		money -= 1000
+		soundfx(1)
+		uvUP.disabled = true
+
+func ads_up():
+	if money >= 1000 and player_lvl >= 2:
+		g_d_l += 5
+		g_d_u += 5
+		p_d_l += 5
+		p_d_u += 5
+		money -= 1000
+		soundfx(1)
+		adsUP.disabled = true
+
+func P_unlock():
+	if money >= 5000 and player_lvl >= 3:
+		Global.purple_unlock = true
+		money -= 5000
+		soundfx(1)
+		unlock_p_kushUP.disabled = true
+		purple_demand.start()
+
+func walt_unlock():
+	if money >= 10000 and player_lvl >= 4:
+		max_sales += 4
+		money -= 10000
+		soundfx(1)
+		waltUP.disabled = true
+
+func weed_UP():
+	if money >= 15000 and player_lvl >= 4:
+		WEED_yield += 4
+		money -= 15000
+		soundfx(1)
+		weed_yieldUP.disabled = true
+
+func chloe_unlock():
+	if money >= 15000 and player_lvl >= 4:
+		max_sales += 4
+		money -= 15000
+		soundfx(1)
+		chloeUP.disabled = true
+
+func meth_unlock():
+	if money >= 40000 and player_lvl >= 5:
+		money -= 40000
+		Global.meth_unlock = true
+		money -= 40000
+		soundfx(1)
+		unlock_methUP.disabled = true
+
+func ad_up_two(): # Remember to add meth to this later
+	if money >= 10000 and player_lvl >= 6:
+		g_d_l += 3
+		g_d_u += 3
+		p_d_l += 5
+		p_d_u += 7
+		money -= 10000
+		soundfx(1)
+		ads_2UP.disabled = true
+
+func w_staff():
+	if money >= 30000 and player_lvl >= 6:
+		Global.weed_staff = true
+		money -= 30000
+		soundfx(1)
+		weed_staffUP.disabled = true
+
+@onready var green_seedsB: Button = $Delivery_Menu/Purchase/GreenSeeds
+@onready var purp_seedsB: Button = $Delivery_Menu/Purchase/PurpSeeds
+
+func seed_cheaper():
+	if money >= 30000 and player_lvl >= 6:
+		money -= 30000
+		soundfx(1)
+		seed_priceUP.disabled = true
+		purp_seed_price -= 30
+		green_seed_price -= 30
+		green_seedsB.text = "Kush Seeds: $45"
+		purp_seedsB.text =" Purple Kush Seeds: $80"
+
+func m_staff():
+	if money >= 50000 and player_lvl >= 6:
+		Global.meth_staff = true
+		money -= 50000
+		soundfx(1)
+		meth_staffUP.disabled = true
+
+func coke_unlock():
+	if money >= 80000 and player_lvl >= 7:
+		Global.coke_unlock = true
+		soundfx(1)
+		money -= 80000
+		unlock_cokeUP.disabled = true
+
+func bricks():
+	if money >= 10000 and player_lvl >= 8:
+		money -= 10000
+		brick_unlocked = true
+		soundfx(1)
+		bricksUP.disabled = true
+
+func c_staff():
+	if money >= 100000:
+		Global.coke_staff = true
+		money -= 100000
+		soundfx(1)
+		coke_staffUP.disabled = true
+
+func yield_up(): # Remember to add  meth and coke here
+	if money >= 100000 and player_lvl >= 8:
+		p_d_l += 4
+		p_d_u += 4
+		g_d_l += 4
+		g_d_u += 4
+		money -= 100000
+		soundfx(1)
+		yieldUP.disabled = true
 
 # PURPLE KUSH:
-@export var purp_seed_price:int = 116
+func open_purp():
+	soundfx(2)
+	refresh_purp_ui()
+	purp_manage.show()
+
+@onready var purp_manage: Panel = $Purp_Manage
+@export var purp_seed_price:int = 110
 var purp_seeds:int = 0
+var purp_unfinished:int = 0
+var purp_unpackaged:int = 0
+var purp_packaged:int = 0
 var fertiliser:int = 0
+var p_d_l:int = 40
+var p_d_u:int = 60
+var PURP_demand:int = randi_range(p_d_l,p_d_u)
+var purp_higher:int = 60
+var purp_lower:int = 40
+var PURP_wait_time:int = randi_range(purp_lower,purp_higher)
+var PURP_input:int = 1
+var purp_operation:int = 1 # Packaging
+@export var PURP_sale_price:int = 40
+@onready var expositionP: Label = $Purp_Manage/Exposition
+@onready var pots_avP: Label = $Purp_Manage/Info/pots_av
+@onready var bags_avP: Label = $Purp_Manage/Info/bags_av
+@onready var jars_avP: Label = $Purp_Manage/Info/jars_av
+@onready var bricks_avP: Label = $Purp_Manage/Info/bricks_av
+@onready var demand_purpP: Label = $Purp_Manage/Info/demand_purp
+@onready var purp_info: VBoxContainer = $Purp_Manage/Info
+
+func refresh_purp_ui():
+	expositionP.text = "Grow your purple kush here, each seed takes " + str(purp_lower) + "-" + str(purp_higher) + " minutes to grow and yields + " + str(WEED_yield) + " unpackaged kush."
+	pots_avP.text = "Pots Available: " + str(pots - pots_inuse)
+	bags_avP.text = "Baggies: " + str(baggies)
+	jars_avP.text = "Jars: " + str(jars)
+	match brick_unlocked:
+		true:
+			bricks_avP.text = "Bricks Available"
+		false:
+			bricks_avP.text = "Bricks: LOCKED"
+	demand_purpP.text = "Demand: ~" + str(PURP_demand)
+
+func purp_input(text) -> void:
+	PURP_input = text
+	soundfx(2)
+	refresh_purp_ui()
+	if PURP_input == null:
+		PURP_input = 1
+
+func _on_package_choice_purp_item_selected(index: int) -> void:
+	purp_operation = index + 1
+	soundfx(2)
+	refresh_purp_ui()
+
+func _on_package_purp_pressed() -> void:
+	soundfx(2)
+	for i in range(PURP_input):
+		match purp_operation:
+			1:
+				if purp_unpackaged >= 1 and baggies >= 1:
+					purp_unpackaged -= 1
+					purp_packaged += 1
+					baggies -= 1
+			2:
+				if purp_unpackaged >= 5 and jars >= 1:
+					purp_unpackaged -= 5
+					purp_packaged += 5
+					jars -= 1
+			3:
+				if purp_unpackaged >= 20 and brick_unlocked != false:
+					purp_unpackaged -= 20
+					purp_packaged += 20
+		refresh_purp_ui()
+
+func purp_pressed_plant(): # Repeater
+	soundfx(2)
+	for i in range(PURP_input):
+		PURP_wait_time = randi_range(purp_lower,purp_higher)
+		if fertiliser > 0:
+			PURP_wait_time /= randf_range(1.7,2.2)
+			fertiliser -= 1
+		PURP_plant()
+		refresh_purp_ui()
+
+func PURP_plant(): # Actual function
+	if pots_inuse < pots and purp_seeds > 0:
+		pots_inuse += 1
+		purp_unfinished += WEED_yield
+		purp_seeds -= 1
+		var purp_planted:Timer = Timer.new()
+		purp_planted.name = "purple_planted_%s" % pots_inuse
+		purp_planted.wait_time = 1
+		var wait_time_stored:int = PURP_wait_time
+		var plant_data = {"planttime": 1}
+		purp_planted.one_shot = false
+		add_child(purp_planted)
+		var pbar:ProgressBar = ProgressBar.new()
+		pbar.show_percentage = true
+		pbar.max_value = wait_time_stored + 1
+		pbar.min_value = 0
+		pbar.value = 1
+		pbar.theme = load("res://UI/sale_purp.tres") as Theme
+		purp_info.add_child(pbar)
+		purp_planted.timeout.connect(PURP_grown.bind(purp_planted, pbar, wait_time_stored, plant_data))
+		purp_planted.start()
+		print("Planted purple")
+	else:
+		print("All pots are in use or no seeds are available")
+
+func PURP_grown(purp_planted: Timer, pbar: ProgressBar, wait_time_stored: int, plant_data):
+	plant_data["planttime"] += 1
+	pbar.value = plant_data["planttime"]
+	if plant_data["planttime"] >= (wait_time_stored + 1):
+		print("Grew green")
+		purp_unfinished -= WEED_yield
+		purp_unpackaged += WEED_yield
+		pots_inuse -= 1
+		pbar.queue_free()
+		purp_planted.queue_free()
+
+# SELLING PURPLE:
+var sold_today_p:int = 0
+@onready var purple_demand: Timer = $Timers/Purple_Demand
+var awaiting_sales:int = 0
+
+func purp_timer_refresh():
+	var low:int = randi_range(30,40)
+	var high:int = randi_range(40,50)
+	purple_demand.wait_time = randi_range(low,high)
+	if (PURP_demand - sold_today_p) > (PURP_demand * 0.65):
+		purple_demand.wait_time /= 2
+	if (PURP_demand - sold_today_p) > (PURP_demand * 0.5) and (PURP_demand - sold_today_p) < (PURP_demand * 0.65):
+		purple_demand.wait_time /= 1.5
+	purple_demand.start()
+
+func purp_demanded():
+	soundfx(3)
+	var demanded:int
+	if sold_today_p < PURP_demand:
+		var min_request:int = randi_range(5,8)
+		var max_request:int = min(min_request, (PURP_demand - sold_today_p))
+		demanded = randi_range(1, max_request)
+	else:
+		demanded = randi_range(1,3)
+	var kill_switch:Timer = Timer.new()
+	kill_switch.wait_time = 15
+	add_child(kill_switch)
+	kill_switch.start()
+	var button:Button = Button.new()
+	var name_picked:int = randi_range(0, names.size() - 1)
+	var raw_price:float = demanded * PURP_sale_price * randf_range(0.9, 1.15)
+	var price:int = round(raw_price)
+	button.text = "%s: %dx Purple Kush for $%d" % [names[name_picked], demanded, price]
+	button.theme = load("res://UI/sale_purp.tres") as Theme
+	button.pressed.connect(purple_sale_pressed.bind(demanded, price, button, name_picked, kill_switch)) # CONNECTION
+	kill_switch.timeout.connect(sale_missed.bind(button, kill_switch))
+	demand.add_child(button)
+	purp_timer_refresh()
+	awaiting_sales += 1
+
+func sale_missed(button: Button, kill_switch: Timer):
+	print("Took too long!")
+	button.queue_free()
+	kill_switch.queue_free()
+	awaiting_sales -= 1
+
+func purple_sale_pressed(demanded: int, price: int, button: Button, name_picked: int, kill_switch: Timer) -> void:
+	soundfx(2)
+	if purp_packaged >= demanded and sales_active < max_sales:
+		purp_packaged -= demanded
+		sales_active += 1
+		button.disabled = true
+		button.text = "Delivering..."
+		var sale_time:int = randi_range(demanded * 4,demanded * 8)
+		var label:Label = Label.new()
+		label.text = names[name_picked] + ": " + str(demanded) + "x Purple Kush"
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.theme = load("res://UI/sale_purp.tres") as Theme
+		sales.add_child(label)
+		var bar:ProgressBar = ProgressBar.new()
+		bar.max_value = sale_time
+		bar.min_value = 0
+		bar.value = 0
+		bar.show_percentage = true
+		bar.theme = load("res://UI/sale_purp.tres") as Theme
+		sales.add_child(bar)
+		var timer:Timer = Timer.new()
+		timer.wait_time = 1
+		timer.one_shot = false
+		self.add_child(timer)
+		var sale_data = {"time_done": 0}
+		timer.timeout.connect(_on_purp_timer_timeout.bind(demanded, price, button, timer, sale_time, sale_data, label, bar))
+		timer.start()
+		player_xp += (demanded * 6)
+		sold_today_p += demanded
+		awaiting_sales -= 1
+		kill_switch.queue_free()
+	else:
+		print("Insufficient kush or no demand or too many active sales")
+		soundfx(2)
+
+func _on_purp_timer_timeout(demanded: int, price: int, button: Button, timer: Timer, sale_time: int, sale_data: Dictionary, label: Label, bar: ProgressBar) -> void:
+	sale_data["time_done"] += 1
+	bar.value = sale_data["time_done"]
+	if sale_data["time_done"] >= sale_time:
+		money += price
+		button.queue_free()
+		timer.queue_free()
+		label.queue_free()
+		bar.queue_free()
+		soundfx(1)
+		sales_active -= 1
+		print("Sale complete: Purple")

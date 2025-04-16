@@ -8,6 +8,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qriqv"]
 bg_color = Color(0.500794, 0.65617, 0.375135, 1)

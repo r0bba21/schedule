@@ -1,19 +1,28 @@
-[gd_scene load_steps=30 format=3 uid="uid://fjeetts18p17"]
+[gd_scene load_steps=39 format=3 uid="uid://fjeetts18p17"]
 
 [ext_resource type="Script" uid="uid://bwlal8smk7cqr" path="res://Scripts/production.gd" id="1_1814h"]
 [ext_resource type="Texture2D" uid="uid://c0webbwtl6s7j" path="res://UI_Assets/leaf-swirl.png" id="1_nh4s3"]
 [ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="2_1rhnv"]
+[ext_resource type="AudioStream" uid="uid://b25nyv8gw28ct" path="res://Assets_Other/Kaching.mp3" id="2_nl5nu"]
 [ext_resource type="Texture2D" uid="uid://ct3p0y7j6qale" path="res://UI_Assets/leaf-swirl (1).png" id="2_vltim"]
+[ext_resource type="AudioStream" uid="uid://xc8qn3nmw3n5" path="res://Assets_Other/Select.mp3" id="3_63f7c"]
 [ext_resource type="Texture2D" uid="uid://chsbfnluovep7" path="res://UI_Assets/crystal-bars.png" id="3_1814h"]
 [ext_resource type="Texture2D" uid="uid://b7nd8urxid3mp" path="res://UI_Assets/powder.png" id="4_clqt6"]
+[ext_resource type="AudioStream" uid="uid://dgk5a58abgr" path="res://Assets_Other/Buzz.mp3" id="4_lwwcs"]
 [ext_resource type="Texture2D" uid="uid://n4wnc0457wso" path="res://UI_Assets/padlock.png" id="6_clqt6"]
 [ext_resource type="Texture2D" uid="uid://xb8n14ohgop8" path="res://UI_Assets/cancel.png" id="7_3peat"]
 [ext_resource type="Texture2D" uid="uid://dgreqrwhosqvi" path="res://UI_Assets/hand-truck.png" id="7_yo8xg"]
 [ext_resource type="Texture2D" uid="uid://cs74ararmdb7k" path="res://UI_Assets/click.png" id="8_27ra7"]
 [ext_resource type="Texture2D" uid="uid://c4ue5s1s20atc" path="res://UI_Assets/shiny-purse.png" id="9_nl5nu"]
 [ext_resource type="Texture2D" uid="uid://cgkamcaeagpwj" path="res://UI_Assets/test-tube-held.png" id="11_63f7c"]
+[ext_resource type="Texture2D" uid="uid://0od5x0kuyurw" path="res://UI_Assets/ringing-bell.png" id="12_v8ar5"]
 [ext_resource type="StyleBox" uid="uid://bujsgxjnybvkm" path="res://UI/button1.tres" id="12_y1v57"]
 [ext_resource type="StyleBox" uid="uid://bjnhxgm2kx5p8" path="res://UI/button1_hover.tres" id="13_nl5nu"]
+[ext_resource type="Texture2D" uid="uid://b3twyja0onj3m" path="res://UI_Assets/alarm-clock.png" id="15_v8ar5"]
+[ext_resource type="Texture2D" uid="uid://b48ugqlm02u21" path="res://UI_Assets/shopping-cart (1).png" id="19_fdmqb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aen41"]
+bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_350yb"]
 bg_color = Color(0.345098, 0.521569, 0.470588, 0.752941)
@@ -39,12 +48,20 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs6a5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sseg3"]
+bg_color = Color(0.580392, 0.729412, 0.686275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdmqb"]
 bg_color = Color(0.345098, 0.521569, 0.470588, 0.752941)
 corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye64w"]
-bg_color = Color(0.345098, 0.521569, 0.470588, 0.870588)
+bg_color = Color(0.207055, 0.333296, 0.297247, 0.917647)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -162,15 +179,51 @@ grow_vertical = 2
 script = ExtResource("1_1814h")
 metadata/_edit_lock_ = true
 
+[node name="BACKING" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aen41")
+metadata/_edit_lock_ = true
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="Minutes" type="Timer" parent="Timers"]
+wait_time = 0.7
 autostart = true
 
 [node name="Green_Demand" type="Timer" parent="Timers"]
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="Purple_Demand" type="Timer" parent="Timers"]
+wait_time = 50.0
+one_shot = true
+
+[node name="CashSFX" type="AudioStreamPlayer2D" parent="Timers"]
+position = Vector2(960, 540)
+stream = ExtResource("2_nl5nu")
+volume_db = -0.3
+bus = &"SFX"
+metadata/_edit_lock_ = true
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="Timers"]
+position = Vector2(960, 540)
+stream = ExtResource("3_63f7c")
+volume_db = 3.0
+bus = &"SFX"
+metadata/_edit_lock_ = true
+
+[node name="Notif" type="AudioStreamPlayer2D" parent="Timers"]
+position = Vector2(960, 540)
+stream = ExtResource("4_lwwcs")
+volume_db = 2.0
+bus = &"SFX"
+metadata/_edit_lock_ = true
 
 [node name="StockPanel" type="Panel" parent="."]
 layout_mode = 0
@@ -224,7 +277,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 28
-text = "Purple Seeds:"
+text = "Purple K. Seeds:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -271,7 +324,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 28
-text = "Purple:"
+text = "Purple Kush:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -318,7 +371,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 28
-text = "Purple:"
+text = "Purple Kush:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -365,7 +418,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 28
-text = "Purple:"
+text = "Purple Kush:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -400,7 +453,7 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 70
-text = "Management:"
+text = "Your Empire:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -474,6 +527,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 text = "Deliveries"
 icon_alignment = 2
 
+[node name="DLV_prog_two" type="ProgressBar" parent="Delivery"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gs6a5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sseg3")
+show_percentage = false
+
 [node name="Sale" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1208.0
@@ -490,6 +554,19 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lwwcs")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lwwcs")
 theme_override_styles/normal = SubResource("StyleBoxFlat_v8ar5")
 text = "Sell Product"
+
+[node name="BELL" type="TextureRect" parent="Sale"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 82.0
+grow_horizontal = 0
+texture = ExtResource("12_v8ar5")
 
 [node name="Research" type="Button" parent="."]
 layout_mode = 0
@@ -561,6 +638,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 8
@@ -568,6 +646,16 @@ theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 35
 text = "Day 1:"
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Time"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = ExtResource("15_v8ar5")
 
 [node name="Kush_Manage" type="Panel" parent="."]
 visible = false
@@ -661,6 +749,18 @@ theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
 text = "Plant Seeds"
 
+[node name="PackageGreen" type="Button" parent="Kush_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Package"
+
 [node name="Title4" type="Label" parent="Kush_Manage/Manage"]
 layout_mode = 2
 theme_override_constants/outline_size = 16
@@ -690,18 +790,6 @@ popup/item_1/text = "Jars"
 popup/item_1/id = 1
 popup/item_2/text = "Bricks"
 popup/item_2/id = 2
-
-[node name="PackageGreen" type="Button" parent="Kush_Manage/Manage"]
-layout_mode = 2
-theme_override_constants/outline_size = 14
-theme_override_fonts/font = ExtResource("2_1rhnv")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/disabled = ExtResource("13_nl5nu")
-theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
-theme_override_styles/hover = ExtResource("13_nl5nu")
-theme_override_styles/pressed = ExtResource("13_nl5nu")
-theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Package"
 
 [node name="Info" type="VBoxContainer" parent="Kush_Manage"]
 layout_mode = 1
@@ -784,6 +872,224 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
 text = "Grow your green kush here, each seed takes 30-50 minutes to grow and yields 6 unpackaged kush."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Purp_Manage" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 139.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ye64w")
+
+[node name="Title" type="Label" parent="Purp_Manage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 80
+text = "Purple Kush:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Purp_Manage"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 92.0
+theme_override_icons/icon = ExtResource("7_3peat")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv8h7")
+
+[node name="Manage" type="VBoxContainer" parent="Purp_Manage"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 166.0
+offset_right = 460.0
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title2" type="Label" parent="Purp_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Enter Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Purp_Input" type="LineEdit" parent="Purp_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_eu05i")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "1"
+placeholder_text = "1"
+alignment = 1
+
+[node name="Title3" type="Label" parent="Purp_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Based on Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlantPURP" type="Button" parent="Purp_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Plant Seeds"
+
+[node name="PackagePURP" type="Button" parent="Purp_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Package"
+
+[node name="Title4" type="Label" parent="Purp_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Pick Package:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PackageChoicePURP" type="OptionButton" parent="Purp_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/normal = ExtResource("12_y1v57")
+theme_override_icons/arrow = ExtResource("8_27ra7")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Baggies"
+popup/item_0/id = 0
+popup/item_1/text = "Jars"
+popup/item_1/id = 1
+popup/item_2/text = "Bricks"
+popup/item_2/id = 2
+
+[node name="Info" type="VBoxContainer" parent="Purp_Manage"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -928.0
+offset_top = 166.0
+offset_right = -12.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title5" type="Label" parent="Purp_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 55
+text = "Your Stats:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pots_av" type="Label" parent="Purp_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Available Pots: 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bags_av" type="Label" parent="Purp_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Baggies: 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="jars_av" type="Label" parent="Purp_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Jars: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bricks_av" type="Label" parent="Purp_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Bricks: LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="demand_purp" type="Label" parent="Purp_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Demand: ~25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exposition" type="Label" parent="Purp_Manage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 100.0
+offset_right = 2.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "Grow your purple kush here, each seed takes 40-60 minutes to grow and yields 6 unpackaged kush."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -938,7 +1244,7 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
-text = "You must dispatch your delivery below ($50 fee) and wait for it to arrive at your lab:"
+text = "You must dispatch your delivery below ($15 fee) and wait for it to arrive at your lab:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -947,14 +1253,30 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = -1.0
-offset_top = 812.0
+offset_top = 874.0
 offset_right = 2.0
-offset_bottom = 878.0
+offset_bottom = 920.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
 text = "You can only have one delivery in progress at a time."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inprogdlv" type="Label" parent="Delivery_Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 740.0
+offset_right = 2.0
+offset_bottom = 786.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 35
+text = "IN PROGRESS:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1002,7 +1324,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Kush Seeds: $84"
+text = "Kush Seeds: $75"
 
 [node name="PurpSeeds" type="Button" parent="Delivery_Menu/Purchase"]
 layout_mode = 2
@@ -1014,7 +1336,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Purple Kush Seeds: $116"
+text = "Purple Kush Seeds: $110"
 
 [node name="Pots" type="Button" parent="Delivery_Menu/Purchase"]
 layout_mode = 2
@@ -1167,6 +1489,7 @@ theme_override_styles/normal = ExtResource("12_y1v57")
 text = "Jars: $8"
 
 [node name="Title2" type="Label" parent="Delivery_Menu"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 151.0
 offset_right = 579.0
@@ -1179,6 +1502,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DLV_Input" type="LineEdit" parent="Delivery_Menu"]
+layout_mode = 0
 offset_left = 591.0
 offset_top = 155.0
 offset_right = 1388.0
@@ -1196,7 +1520,7 @@ alignment = 1
 layout_mode = 2
 offset_left = 14.0
 offset_top = 659.0
-offset_right = 1388.0
+offset_right = 1026.0
 offset_bottom = 726.0
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
@@ -1206,7 +1530,24 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_yo8xg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yo8xg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yo8xg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_y1v57")
-text = "Dispatch - 0 Items - $50"
+text = "Dispatch - 0 Items - $15"
+
+[node name="Empty" type="Button" parent="Delivery_Menu"]
+layout_mode = 2
+offset_left = 1038.0
+offset_top = 659.0
+offset_right = 1386.0
+offset_bottom = 726.0
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("19_fdmqb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yo8xg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_yo8xg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yo8xg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yo8xg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y1v57")
+text = "Empty Cart"
 
 [node name="DeliveryProg" type="ProgressBar" parent="Delivery_Menu"]
 layout_mode = 1
@@ -1215,9 +1556,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 14.0
-offset_top = -179.0
+offset_top = -135.0
 offset_right = -14.0
-offset_bottom = -105.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 10
@@ -1382,7 +1723,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Mix-Ins - $2k "
+text = " Mix-Ins - $1k "
 
 [node name="UV" type="Button" parent="Research_Menu/LVLS/Title/ResearchsL2"]
 layout_mode = 2
@@ -1394,7 +1735,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " UV Lamps - $2k "
+text = " UV Lamps - $1k "
 
 [node name="Ads" type="Button" parent="Research_Menu/LVLS/Title/ResearchsL2"]
 layout_mode = 2
@@ -1406,7 +1747,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Advertising - $2k "
+text = " Advertising - $1k "
 
 [node name="Title2" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -1438,7 +1779,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Unlock Purple Kush - $10,000"
+text = "Unlock Purple Kush - $5,000"
 
 [node name="Title3" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -1699,17 +2040,118 @@ theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
 text = " Yield Bonus (All) - $100k "
 
+[node name="LVLUP" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = -209.0
+offset_right = 345.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_350yb")
+
+[node name="Title2" type="Label" parent="LVLUP"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 80
+text = "Level Up!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title3" type="Label" parent="LVLUP"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 105.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Congratulations on reaching level:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reward_LVL" type="Label" parent="LVLUP"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 231.0
+offset_bottom = 286.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Enjoy a reward of $250!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NEW_LVL" type="Label" parent="LVLUP"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 160.0
+offset_bottom = 231.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 60
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit_LVL" type="Button" parent="LVLUP"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -111.0
+offset_right = 225.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Continue"
+
 [connection signal="timeout" from="Timers/Minutes" to="." method="minute"]
 [connection signal="timeout" from="Timers/Green_Demand" to="." method="green_demanded"]
+[connection signal="timeout" from="Timers/Purple_Demand" to="." method="purp_demanded"]
 [connection signal="pressed" from="Kush" to="." method="_on_kush_pressed"]
+[connection signal="pressed" from="Purple" to="." method="open_purp"]
 [connection signal="pressed" from="Delivery" to="." method="open_deliveries"]
 [connection signal="pressed" from="Sale" to="." method="_on_sale_pressed"]
 [connection signal="pressed" from="Research" to="." method="open_research"]
 [connection signal="pressed" from="Kush_Manage/Exit" to="." method="exit_ui"]
 [connection signal="text_changed" from="Kush_Manage/Manage/Green_Input" to="." method="_on_green_input_text_changed"]
 [connection signal="pressed" from="Kush_Manage/Manage/PlantGreen" to="." method="pressed_plant_green"]
-[connection signal="item_selected" from="Kush_Manage/Manage/PackageChoiceGreen" to="." method="_on_package_choice_green_item_selected"]
 [connection signal="pressed" from="Kush_Manage/Manage/PackageGreen" to="." method="package_green"]
+[connection signal="item_selected" from="Kush_Manage/Manage/PackageChoiceGreen" to="." method="_on_package_choice_green_item_selected"]
+[connection signal="pressed" from="Purp_Manage/Exit" to="." method="exit_ui"]
+[connection signal="text_changed" from="Purp_Manage/Manage/Purp_Input" to="." method="purp_input"]
+[connection signal="pressed" from="Purp_Manage/Manage/PlantPURP" to="." method="purp_pressed_plant"]
+[connection signal="pressed" from="Purp_Manage/Manage/PackagePURP" to="." method="_on_package_purp_pressed"]
+[connection signal="item_selected" from="Purp_Manage/Manage/PackageChoicePURP" to="." method="_on_package_choice_purp_item_selected"]
 [connection signal="pressed" from="Sale_Menu/Exit" to="." method="exit_ui"]
 [connection signal="pressed" from="Delivery_Menu/Exit" to="." method="exit_ui"]
 [connection signal="pressed" from="Delivery_Menu/Purchase/GreenSeeds" to="." method="_on_buy_seeds_pressed"]
@@ -1720,4 +2162,23 @@ text = " Yield Bonus (All) - $100k "
 [connection signal="pressed" from="Delivery_Menu/Purchase3/Jars" to="." method="buy_jars"]
 [connection signal="text_changed" from="Delivery_Menu/DLV_Input" to="." method="DLV_input"]
 [connection signal="pressed" from="Delivery_Menu/DISPATCH" to="." method="DISPATCH"]
+[connection signal="pressed" from="Delivery_Menu/Empty" to="." method="EMPTY"]
 [connection signal="pressed" from="Research_Menu/Exit" to="." method="exit_ui"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title/ResearchsL2/Package" to="." method="package_up"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title/ResearchsL2/Mix" to="." method="mix_up"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title/ResearchsL2/UV" to="." method="UV_up"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title/ResearchsL2/Ads" to="." method="ads_up"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title2/Unlock PKush" to="." method="P_unlock"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title3/ResearchsL4/Walt" to="." method="walt_unlock"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title3/ResearchsL4/WeedYield" to="." method="weed_UP"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title3/ResearchsL4/Chloe" to="." method="chloe_unlock"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title4/Unlock Meth" to="." method="meth_unlock"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/Ads2" to="." method="ad_up_two"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/WeedStaff" to="." method="w_staff"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/SeedPrice" to="." method="seed_cheaper"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/MethStaff" to="." method="m_staff"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title6/Unlock Coke" to="." method="coke_unlock"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title7/ResearchsL8/Bricks" to="." method="bricks"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title7/ResearchsL8/CokeStaff" to="." method="c_staff"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title7/ResearchsL8/Yield" to="." method="yield_up"]
+[connection signal="pressed" from="LVLUP/Exit_LVL" to="." method="exit_lvlup"]
