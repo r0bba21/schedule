@@ -2,9 +2,11 @@ extends Node3D
 
 @onready var production: Control = $Production
 @onready var paused: Control = $Paused
+@onready var sfx: AudioStreamPlayer2D = $CharacterBody3D/SFX
+@onready var player: CharacterBody3D = $CharacterBody3D
 
 func soundfx():
-	pass
+	sfx.play()
 
 func _input(event: InputEvent) -> void: # KEYBOARD SHORTCUTS
 	if event.is_action_pressed("Phone"):
@@ -31,3 +33,15 @@ func _input(event: InputEvent) -> void: # KEYBOARD SHORTCUTS
 				paused.hide()
 				Global.in_pause = false
 				Engine.time_scale = 1.0
+
+func _on_stuck_pressed() -> void:
+	soundfx()
+	paused.hide()
+	Global.in_pause = false
+	Engine.time_scale = 1.0
+	player.position.x = -7.677
+	player.position.y = 0.077
+	player.position.z = -13.20
+	player.rotation.x = 0
+	player.rotation.y = -144.3
+	player.rotation.z = 0
