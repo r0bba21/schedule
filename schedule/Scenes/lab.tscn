@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpsvctcfaquev"]
+[gd_scene load_steps=15 format=3 uid="uid://bpsvctcfaquev"]
 
 [ext_resource type="Script" uid="uid://d0lkxidy86cs2" path="res://Scripts/lab.gd" id="1_b7lmg"]
 [ext_resource type="PackedScene" uid="uid://d2fwxk8h8of2u" path="res://CharacterController.tscn" id="1_h3xp2"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://fjeetts18p17" path="res://Scenes/production.tscn" id="3_x8gvj"]
 [ext_resource type="PackedScene" uid="uid://5bwohuat633p" path="res://Scenes/paused.tscn" id="4_m11ee"]
 [ext_resource type="PackedScene" uid="uid://drw0dqac4xb5q" path="res://BLENDER/lab_ver2.blend" id="5_x8gvj"]
+[ext_resource type="PackedScene" uid="uid://blwh5hv2pfq6x" path="res://Scenes/functions.tscn" id="6_4w5lu"]
 [ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="6_6jcdl"]
+[ext_resource type="PackedScene" uid="uid://bmg1grkwgls3g" path="res://Scenes/tutorial.tscn" id="7_p5ity"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7lmg"]
 sky_top_color = Color(1, 1, 1, 1)
@@ -40,9 +42,6 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 shadow_size = 10
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m11ee"]
-albedo_color = Color(0.236563, 0.320562, 0.127579, 1)
-
 [node name="Lab" type="Node3D"]
 script = ExtResource("1_b7lmg")
 
@@ -62,10 +61,10 @@ use_collision = true
 size = Vector3(17.5187, 0.100891, 15.4519)
 
 [node name="InnerWall" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62557, 4.69193, -9.11132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71562, 4.69193, -9.22509)
 layers = 0
 use_collision = true
-size = Vector3(16.2394, 10.7598, 14.3203)
+size = Vector3(16.4195, 10.7598, 14.5478)
 
 [node name="OuterWall" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62547, 4.69193, -9.16051)
@@ -86,10 +85,10 @@ use_collision = true
 size = Vector3(2.37552, 2.37309, 6.93801)
 
 [node name="TV" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9276, 2.83655, -12.8119)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8576, 2.46192, -12.8144)
 layers = 0
 use_collision = true
-size = Vector3(1.04155, 5.82764, 5.37265)
+size = Vector3(0.709814, 5.07837, 4.27839)
 
 [node name="Cauldron_IMP" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61831, 1.2251, -15.858)
@@ -143,14 +142,22 @@ stream = ExtResource("3_m11ee")
 volume_db = 3.0
 bus = &"SFX"
 
+[node name="lab_ver2" parent="." instance=ExtResource("5_x8gvj")]
+
 [node name="Production" parent="." instance=ExtResource("3_x8gvj")]
 visible = false
+
+[node name="Functions" parent="." instance=ExtResource("6_4w5lu")]
+visible = false
+
+[node name="Tutorial" parent="." instance=ExtResource("7_p5ity")]
 
 [node name="Paused" parent="." instance=ExtResource("4_m11ee")]
 visible = false
 metadata/_edit_lock_ = true
 
 [node name="Stuck" type="Button" parent="Paused"]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 192.0
@@ -163,11 +170,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_tlooe")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tlooe")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4w5lu")
 text = "I'm Stuck!"
-
-[node name="lab_ver2" parent="." instance=ExtResource("5_x8gvj")]
-
-[node name="Ganja" parent="lab_ver2" index="12"]
-surface_material_override/0 = SubResource("StandardMaterial3D_m11ee")
 
 [connection signal="pressed" from="Paused/Stuck" to="." method="_on_stuck_pressed"]
 

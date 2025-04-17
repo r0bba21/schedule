@@ -201,8 +201,15 @@ one_shot = true
 autostart = true
 
 [node name="Purple_Demand" type="Timer" parent="Timers"]
-wait_time = 50.0
+wait_time = 30.0
 one_shot = true
+autostart = true
+
+[node name="Meth_Demand" type="Timer" parent="Timers"]
+wait_time = 30.0
+one_shot = true
+
+[node name="Coke_Demand" type="Timer" parent="Timers"]
 
 [node name="CashSFX" type="AudioStreamPlayer2D" parent="Timers"]
 position = Vector2(960, 540)
@@ -453,7 +460,7 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 70
-text = "Your Empire:"
+text = "Management:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -463,6 +470,7 @@ offset_left = 496.0
 offset_top = 139.0
 offset_right = 828.0
 offset_bottom = 471.0
+tooltip_text = "Kush"
 theme_override_icons/icon = ExtResource("1_nh4s3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
@@ -476,6 +484,7 @@ offset_left = 852.0
 offset_top = 139.0
 offset_right = 1184.0
 offset_bottom = 471.0
+tooltip_text = "Purple Kush"
 theme_override_icons/icon = ExtResource("2_vltim")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
@@ -489,6 +498,7 @@ offset_left = 1208.0
 offset_top = 139.0
 offset_right = 1540.0
 offset_bottom = 471.0
+tooltip_text = "Meth"
 theme_override_icons/icon = ExtResource("3_1814h")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
@@ -502,6 +512,7 @@ offset_left = 1564.0
 offset_top = 139.0
 offset_right = 1896.0
 offset_bottom = 471.0
+tooltip_text = "Cocaine"
 theme_override_icons/icon = ExtResource("4_clqt6")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_lwwcs")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lwwcs")
@@ -534,6 +545,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 27.0
 grow_horizontal = 2
+tooltip_text = "Delivery progress"
 theme_override_styles/background = SubResource("StyleBoxFlat_gs6a5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sseg3")
 show_percentage = false
@@ -566,6 +578,7 @@ offset_top = -18.0
 offset_right = 18.0
 offset_bottom = 82.0
 grow_horizontal = 0
+tooltip_text = "NEW OFFER!"
 texture = ExtResource("12_v8ar5")
 
 [node name="Research" type="Button" parent="."]
@@ -591,6 +604,7 @@ offset_left = 852.0
 offset_top = 139.0
 offset_right = 1192.0
 offset_bottom = 479.0
+tooltip_text = "LOCKED"
 texture = ExtResource("6_clqt6")
 
 [node name="Lock_Meth" type="TextureRect" parent="."]
@@ -599,6 +613,7 @@ offset_left = 1208.0
 offset_top = 139.0
 offset_right = 1548.0
 offset_bottom = 479.0
+tooltip_text = "LOCKED"
 texture = ExtResource("6_clqt6")
 
 [node name="Lock_Coke" type="TextureRect" parent="."]
@@ -607,6 +622,7 @@ offset_left = 1564.0
 offset_top = 139.0
 offset_right = 1904.0
 offset_bottom = 479.0
+tooltip_text = "LOCKED"
 texture = ExtResource("6_clqt6")
 
 [node name="Time" type="Panel" parent="."]
@@ -859,6 +875,15 @@ text = "Demand: ~25"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ab" type="Label" parent="Kush_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "ACTIVE BATCHES:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Exposition" type="Label" parent="Kush_Manage"]
 layout_mode = 1
 anchors_preset = 10
@@ -1077,6 +1102,15 @@ text = "Demand: ~25"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ab" type="Label" parent="Purp_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "ACTIVE BATCHES:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Exposition" type="Label" parent="Purp_Manage"]
 layout_mode = 1
 anchors_preset = 10
@@ -1090,6 +1124,460 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
 text = "Grow your purple kush here, each seed takes 40-60 minutes to grow and yields 6 unpackaged kush."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meth_Manage" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 139.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ye64w")
+
+[node name="Title" type="Label" parent="Meth_Manage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 80
+text = "Methamphetamine:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Meth_Manage"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 92.0
+theme_override_icons/icon = ExtResource("7_3peat")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv8h7")
+
+[node name="Manage" type="VBoxContainer" parent="Meth_Manage"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 166.0
+offset_right = 460.0
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title2" type="Label" parent="Meth_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Enter Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meth_Input" type="LineEdit" parent="Meth_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_eu05i")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "1"
+placeholder_text = "1"
+alignment = 1
+
+[node name="Title3" type="Label" parent="Meth_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Based on Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CookMeth" type="Button" parent="Meth_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Start Cooking"
+
+[node name="PackingMeth" type="Button" parent="Meth_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Package"
+
+[node name="Title4" type="Label" parent="Meth_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Pick Package:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MethPackOp" type="OptionButton" parent="Meth_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/normal = ExtResource("12_y1v57")
+theme_override_icons/arrow = ExtResource("8_27ra7")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Baggies"
+popup/item_0/id = 0
+popup/item_1/text = "Jars"
+popup/item_1/id = 1
+popup/item_2/text = "Bricks"
+popup/item_2/id = 2
+
+[node name="Info" type="VBoxContainer" parent="Meth_Manage"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -928.0
+offset_top = 166.0
+offset_right = -12.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title5" type="Label" parent="Meth_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 55
+text = "Your Stats:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="chem_av" type="Label" parent="Meth_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Available Chem Sets: 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bags_av" type="Label" parent="Meth_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Baggies: 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="jars_av" type="Label" parent="Meth_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Jars: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bricks_av" type="Label" parent="Meth_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Bricks: LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dmnd_METH" type="Label" parent="Meth_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Demand: ~25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ab" type="Label" parent="Meth_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "ACTIVE BATCHES:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exposition_Meth" type="Label" parent="Meth_Manage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 100.0
+offset_right = 2.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "Cook your meth here, each batch of 8 crystals takes 45-60 minutes to cook and 1 psuedo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coke_Manage" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 139.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ye64w")
+
+[node name="Title" type="Label" parent="Coke_Manage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 80
+text = "Cocaine:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Coke_Manage"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 92.0
+theme_override_icons/icon = ExtResource("7_3peat")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv8h7")
+
+[node name="Manage" type="VBoxContainer" parent="Coke_Manage"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 166.0
+offset_right = 460.0
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title2" type="Label" parent="Coke_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Enter Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coke_Input" type="LineEdit" parent="Coke_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_eu05i")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "1"
+placeholder_text = "1"
+alignment = 1
+
+[node name="Title3" type="Label" parent="Coke_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Based on Amount:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CookCoke" type="Button" parent="Coke_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Start Cooking"
+
+[node name="PackCoke" type="Button" parent="Coke_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Package"
+
+[node name="Title4" type="Label" parent="Coke_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 50
+text = "Pick Package:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CokePackOp" type="OptionButton" parent="Coke_Manage/Manage"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/disabled = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_toemw")
+theme_override_styles/normal = ExtResource("12_y1v57")
+theme_override_icons/arrow = ExtResource("8_27ra7")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Baggies"
+popup/item_0/id = 0
+popup/item_1/text = "Jars"
+popup/item_1/id = 1
+popup/item_2/text = "Bricks"
+popup/item_2/id = 2
+
+[node name="Info" type="VBoxContainer" parent="Coke_Manage"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -928.0
+offset_top = 166.0
+offset_right = -12.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title5" type="Label" parent="Coke_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 55
+text = "Your Stats:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cauldron_av" type="Label" parent="Coke_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Available Cauldrons: 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bags_av" type="Label" parent="Coke_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Baggies: 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="jars_av" type="Label" parent="Coke_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Jars: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bricks_av" type="Label" parent="Coke_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Bricks: LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dmnd_COKE" type="Label" parent="Coke_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 40
+text = "Demand: ~25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ab" type="Label" parent="Coke_Manage/Info"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "ACTIVE BATCHES:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exposition_Coke" type="Label" parent="Coke_Manage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 100.0
+offset_right = 2.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "Cook your cocaine here, each pot takes 50-70 minutes to cook and yields 12 lines."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1302,7 +1790,7 @@ offset_top = 232.0
 offset_right = 462.0
 offset_bottom = -325.0
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Exposition2" type="Label" parent="Delivery_Menu/Purchase"]
@@ -1352,6 +1840,7 @@ text = "Pots: $80"
 
 [node name="Fertilise" type="Button" parent="Delivery_Menu/Purchase"]
 layout_mode = 2
+tooltip_text = "Speeds up weed growth by 1.7-2.2x"
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 35
@@ -1371,7 +1860,7 @@ offset_top = 232.0
 offset_right = 924.0
 offset_bottom = -325.0
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Exposition2" type="Label" parent="Delivery_Menu/Purchase2"]
@@ -1393,43 +1882,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Psuedo: $"
-
-[node name="CokeSeeds" type="Button" parent="Delivery_Menu/Purchase2"]
-layout_mode = 2
-theme_override_constants/outline_size = 14
-theme_override_fonts/font = ExtResource("2_1rhnv")
-theme_override_font_sizes/font_size = 35
-theme_override_styles/disabled = ExtResource("13_nl5nu")
-theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
-theme_override_styles/hover = ExtResource("13_nl5nu")
-theme_override_styles/pressed = ExtResource("13_nl5nu")
-theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Cocoa Seeds: $"
-
-[node name="Ovens" type="Button" parent="Delivery_Menu/Purchase2"]
-layout_mode = 2
-theme_override_constants/outline_size = 14
-theme_override_fonts/font = ExtResource("2_1rhnv")
-theme_override_font_sizes/font_size = 35
-theme_override_styles/disabled = ExtResource("13_nl5nu")
-theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
-theme_override_styles/hover = ExtResource("13_nl5nu")
-theme_override_styles/pressed = ExtResource("13_nl5nu")
-theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Ovens: $"
-
-[node name="Cauldrons" type="Button" parent="Delivery_Menu/Purchase2"]
-layout_mode = 2
-theme_override_constants/outline_size = 14
-theme_override_fonts/font = ExtResource("2_1rhnv")
-theme_override_font_sizes/font_size = 35
-theme_override_styles/disabled = ExtResource("13_nl5nu")
-theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
-theme_override_styles/hover = ExtResource("13_nl5nu")
-theme_override_styles/pressed = ExtResource("13_nl5nu")
-theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Cauldrons: $"
+text = "Psuedo: $120"
 
 [node name="ChemSets" type="Button" parent="Delivery_Menu/Purchase2"]
 layout_mode = 2
@@ -1441,7 +1894,31 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Chemistry Sets: $"
+text = "Chemistry Sets: $1,000"
+
+[node name="CokeSeeds" type="Button" parent="Delivery_Menu/Purchase2"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Cocoa Leaves: $150"
+
+[node name="Cauldrons" type="Button" parent="Delivery_Menu/Purchase2"]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "Cauldrons: $1,000"
 
 [node name="Purchase3" type="VBoxContainer" parent="Delivery_Menu"]
 layout_mode = 1
@@ -1452,7 +1929,7 @@ offset_top = 232.0
 offset_right = 1386.0
 offset_bottom = -326.0
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Exposition2" type="Label" parent="Delivery_Menu/Purchase3"]
@@ -1466,6 +1943,7 @@ vertical_alignment = 1
 
 [node name="Bags" type="Button" parent="Delivery_Menu/Purchase3"]
 layout_mode = 2
+tooltip_text = "Fits 1 packaged product"
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 35
@@ -1478,6 +1956,7 @@ text = "Baggies: $2"
 
 [node name="Jars" type="Button" parent="Delivery_Menu/Purchase3"]
 layout_mode = 2
+tooltip_text = "Fits 5 packaged products"
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 35
@@ -1522,6 +2001,7 @@ offset_left = 14.0
 offset_top = 659.0
 offset_right = 1026.0
 offset_bottom = 726.0
+tooltip_text = "Double check your order?"
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
@@ -1651,6 +2131,7 @@ offset_right = -12.0
 offset_bottom = -174.5
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "Progress to next level"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
@@ -1703,6 +2184,7 @@ alignment = 1
 
 [node name="Package" type="Button" parent="Research_Menu/LVLS/Title/ResearchsL2"]
 layout_mode = 2
+tooltip_text = "Increases sale price of your weed"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1715,6 +2197,7 @@ text = " Better Packaging - $1k "
 
 [node name="Mix" type="Button" parent="Research_Menu/LVLS/Title/ResearchsL2"]
 layout_mode = 2
+tooltip_text = "Increases sale price of your weed"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1727,6 +2210,7 @@ text = " Mix-Ins - $1k "
 
 [node name="UV" type="Button" parent="Research_Menu/LVLS/Title/ResearchsL2"]
 layout_mode = 2
+tooltip_text = "Makes your weed grow quicker"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1739,6 +2223,7 @@ text = " UV Lamps - $1k "
 
 [node name="Ads" type="Button" parent="Research_Menu/LVLS/Title/ResearchsL2"]
 layout_mode = 2
+tooltip_text = "Slightly increases demand"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1747,7 +2232,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Advertising - $1k "
+text = " Advertising - $500 "
 
 [node name="Title2" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -1771,6 +2256,7 @@ offset_right = 1084.0
 offset_bottom = 20.5
 grow_horizontal = 0
 grow_vertical = 2
+tooltip_text = "Unlocks new kush strain"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1779,7 +2265,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Unlock Purple Kush - $5,000"
+text = "Unlock Purple Kush - $2,500"
 
 [node name="Title3" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -1806,20 +2292,9 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Walt" type="Button" parent="Research_Menu/LVLS/Title3/ResearchsL4"]
-layout_mode = 2
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("2_1rhnv")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/disabled = ExtResource("13_nl5nu")
-theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
-theme_override_styles/hover = ExtResource("13_nl5nu")
-theme_override_styles/pressed = ExtResource("13_nl5nu")
-theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Dealer: Walter - $10k "
-
 [node name="WeedYield" type="Button" parent="Research_Menu/LVLS/Title3/ResearchsL4"]
 layout_mode = 2
+tooltip_text = "Your weed plants give you more kush"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1828,10 +2303,24 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Yield Bonus (Weed) - $15k "
+text = " Yield Bonus (Weed) - $3k "
+
+[node name="Walt" type="Button" parent="Research_Menu/LVLS/Title3/ResearchsL4"]
+layout_mode = 2
+tooltip_text = "Max deals at once increases by 4"
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = " Dealer: Uncle Walt - $5k "
 
 [node name="Chloe" type="Button" parent="Research_Menu/LVLS/Title3/ResearchsL4"]
 layout_mode = 2
+tooltip_text = "Max deals at once increases by 4 (reccomend waiting until meth or cocaine to buy)"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1840,7 +2329,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Dealer: Chloe - $15k "
+text = " Dealer: Chloe - $7.5k "
 
 [node name="Title4" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -1864,6 +2353,7 @@ offset_right = 1084.0
 offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
+tooltip_text = "Purchases a chemistry set and allows you to make meth"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1872,7 +2362,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Unlock Meth - $40,000"
+text = "Unlock Meth - $5,000"
 
 [node name="Title5" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -1901,6 +2391,7 @@ alignment = 1
 
 [node name="Ads2" type="Button" parent="Research_Menu/LVLS/Title5/ResearchsL6"]
 layout_mode = 2
+tooltip_text = "Demand increase"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1909,22 +2400,11 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " More Ads - $10k "
-
-[node name="WeedStaff" type="Button" parent="Research_Menu/LVLS/Title5/ResearchsL6"]
-layout_mode = 2
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("2_1rhnv")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/disabled = ExtResource("13_nl5nu")
-theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
-theme_override_styles/hover = ExtResource("13_nl5nu")
-theme_override_styles/pressed = ExtResource("13_nl5nu")
-theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Weed Staff - $30k "
+text = " More Ads - $2k "
 
 [node name="SeedPrice" type="Button" parent="Research_Menu/LVLS/Title5/ResearchsL6"]
 layout_mode = 2
+tooltip_text = "Weed seeds become cheaper"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1933,10 +2413,24 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Cheap Seeds - $30k "
+text = " Cheap Seeds - $3k "
+
+[node name="WeedStaff" type="Button" parent="Research_Menu/LVLS/Title5/ResearchsL6"]
+layout_mode = 2
+tooltip_text = "Weed growth becomes automated"
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = " Weed Staff - $7.5k "
 
 [node name="MethStaff" type="Button" parent="Research_Menu/LVLS/Title5/ResearchsL6"]
 layout_mode = 2
+tooltip_text = "Meth cooking becomes automated"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1945,7 +2439,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Meth Staff - $50k "
+text = " Meth Staff - $10k "
 
 [node name="Title6" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -1969,6 +2463,7 @@ offset_right = 1084.0
 offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
+tooltip_text = "Buys a cauldron so you can start making cocaine"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -1977,7 +2472,7 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = "Unlock Cocaine - $80,000"
+text = "Unlock Cocaine - $10,000"
 
 [node name="Title7" type="Label" parent="Research_Menu/LVLS"]
 layout_mode = 2
@@ -2006,6 +2501,7 @@ alignment = 1
 
 [node name="Bricks" type="Button" parent="Research_Menu/LVLS/Title7/ResearchsL8"]
 layout_mode = 2
+tooltip_text = "Allows you to package products in bricks"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -2014,22 +2510,11 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Unlock Bricks - $10k "
-
-[node name="CokeStaff" type="Button" parent="Research_Menu/LVLS/Title7/ResearchsL8"]
-layout_mode = 2
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("2_1rhnv")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/disabled = ExtResource("13_nl5nu")
-theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
-theme_override_styles/hover = ExtResource("13_nl5nu")
-theme_override_styles/pressed = ExtResource("13_nl5nu")
-theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Coke Staff - $100k "
+text = " Unlock Bricks - $2k "
 
 [node name="Yield" type="Button" parent="Research_Menu/LVLS/Title7/ResearchsL8"]
 layout_mode = 2
+tooltip_text = "All products give you more yield per batch"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
@@ -2038,7 +2523,20 @@ theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
 theme_override_styles/pressed = ExtResource("13_nl5nu")
 theme_override_styles/normal = ExtResource("12_y1v57")
-text = " Yield Bonus (All) - $100k "
+text = " Yield Bonus (All) - $10k "
+
+[node name="CokeStaff" type="Button" parent="Research_Menu/LVLS/Title7/ResearchsL8"]
+layout_mode = 2
+tooltip_text = "Cocaine cooking becomes automated"
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = " Cocaine Staff - $15k "
 
 [node name="LVLUP" type="Panel" parent="."]
 visible = false
@@ -2137,8 +2635,11 @@ text = "Continue"
 [connection signal="timeout" from="Timers/Minutes" to="." method="minute"]
 [connection signal="timeout" from="Timers/Green_Demand" to="." method="green_demanded"]
 [connection signal="timeout" from="Timers/Purple_Demand" to="." method="purp_demanded"]
+[connection signal="timeout" from="Timers/Meth_Demand" to="." method="meth_demanded"]
 [connection signal="pressed" from="Kush" to="." method="_on_kush_pressed"]
 [connection signal="pressed" from="Purple" to="." method="open_purp"]
+[connection signal="pressed" from="Meth" to="." method="open_meth"]
+[connection signal="pressed" from="Cocaine" to="." method="open_coke"]
 [connection signal="pressed" from="Delivery" to="." method="open_deliveries"]
 [connection signal="pressed" from="Sale" to="." method="_on_sale_pressed"]
 [connection signal="pressed" from="Research" to="." method="open_research"]
@@ -2152,6 +2653,16 @@ text = "Continue"
 [connection signal="pressed" from="Purp_Manage/Manage/PlantPURP" to="." method="purp_pressed_plant"]
 [connection signal="pressed" from="Purp_Manage/Manage/PackagePURP" to="." method="_on_package_purp_pressed"]
 [connection signal="item_selected" from="Purp_Manage/Manage/PackageChoicePURP" to="." method="_on_package_choice_purp_item_selected"]
+[connection signal="pressed" from="Meth_Manage/Exit" to="." method="exit_ui"]
+[connection signal="text_changed" from="Meth_Manage/Manage/Meth_Input" to="." method="_on_meth_input_text_changed"]
+[connection signal="pressed" from="Meth_Manage/Manage/CookMeth" to="." method="_on_cook_meth_pressed"]
+[connection signal="pressed" from="Meth_Manage/Manage/PackingMeth" to="." method="_on_packing_meth_pressed"]
+[connection signal="toggled" from="Meth_Manage/Manage/MethPackOp" to="." method="_on_meth_pack_op_pressed"]
+[connection signal="pressed" from="Coke_Manage/Exit" to="." method="exit_ui"]
+[connection signal="text_changed" from="Coke_Manage/Manage/Coke_Input" to="." method="_on_coke_input_text_changed"]
+[connection signal="pressed" from="Coke_Manage/Manage/CookCoke" to="." method="_on_cook_coke_pressed"]
+[connection signal="pressed" from="Coke_Manage/Manage/PackCoke" to="." method="_on_pack_coke_pressed"]
+[connection signal="item_selected" from="Coke_Manage/Manage/CokePackOp" to="." method="_on_coke_pack_op_item_selected"]
 [connection signal="pressed" from="Sale_Menu/Exit" to="." method="exit_ui"]
 [connection signal="pressed" from="Delivery_Menu/Exit" to="." method="exit_ui"]
 [connection signal="pressed" from="Delivery_Menu/Purchase/GreenSeeds" to="." method="_on_buy_seeds_pressed"]
@@ -2169,16 +2680,16 @@ text = "Continue"
 [connection signal="pressed" from="Research_Menu/LVLS/Title/ResearchsL2/UV" to="." method="UV_up"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title/ResearchsL2/Ads" to="." method="ads_up"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title2/Unlock PKush" to="." method="P_unlock"]
-[connection signal="pressed" from="Research_Menu/LVLS/Title3/ResearchsL4/Walt" to="." method="walt_unlock"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title3/ResearchsL4/WeedYield" to="." method="weed_UP"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title3/ResearchsL4/Walt" to="." method="walt_unlock"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title3/ResearchsL4/Chloe" to="." method="chloe_unlock"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title4/Unlock Meth" to="." method="meth_unlock"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/Ads2" to="." method="ad_up_two"]
-[connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/WeedStaff" to="." method="w_staff"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/SeedPrice" to="." method="seed_cheaper"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/WeedStaff" to="." method="w_staff"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title5/ResearchsL6/MethStaff" to="." method="m_staff"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title6/Unlock Coke" to="." method="coke_unlock"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title7/ResearchsL8/Bricks" to="." method="bricks"]
-[connection signal="pressed" from="Research_Menu/LVLS/Title7/ResearchsL8/CokeStaff" to="." method="c_staff"]
 [connection signal="pressed" from="Research_Menu/LVLS/Title7/ResearchsL8/Yield" to="." method="yield_up"]
+[connection signal="pressed" from="Research_Menu/LVLS/Title7/ResearchsL8/CokeStaff" to="." method="c_staff"]
 [connection signal="pressed" from="LVLUP/Exit_LVL" to="." method="exit_lvlup"]

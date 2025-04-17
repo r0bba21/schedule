@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmg1grkwgls3g"]
+
+[ext_resource type="Script" uid="uid://clhaif7ycfpnd" path="res://Scripts/tutorial.gd" id="1_i6t4g"]
+[ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="1_omtrn"]
+[ext_resource type="StyleBox" uid="uid://bjnhxgm2kx5p8" path="res://UI/button1_hover.tres" id="2_i6t4g"]
+[ext_resource type="StyleBox" uid="uid://bujsgxjnybvkm" path="res://UI/button1.tres" id="3_p8jf4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1f1o"]
+bg_color = Color(0.593836, 0.692229, 0.622092, 0.309804)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i6t4g")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p1f1o")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -491.0
+offset_top = 126.0
+offset_right = 491.0
+offset_bottom = 243.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("1_omtrn")
+theme_override_font_sizes/font_size = 100
+text = "Welcome to DRUGGO!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -491.0
+offset_top = 236.0
+offset_right = 491.0
+offset_bottom = 260.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_omtrn")
+theme_override_font_sizes/font_size = 20
+text = "A game by Bert Industries"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exposition" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -701.0
+offset_top = -203.5
+offset_right = 701.0
+offset_bottom = 203.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 13
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_omtrn")
+theme_override_font_sizes/font_size = 40
+text = "In this game, you run a drug empire in your bedroom:
+Your trusty old Uncle Walt has given you 10 kush seeds and $200 to start with.
+To grow your empire, press 'E' to enter the management menu.
+To control your character, press 'F' to open the function menu.
+Feel free to walk around your room in your free time.
+Press 'ESC' to access the pause menu and press the tutorial button for tips.
+If your mouse ever goes missing or if you ever get stuck press 'ESC' and 'I'm Stuck'.
+HAVE FUN AND GOOD LUCK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -377.0
+offset_top = 307.0
+offset_right = 377.0
+offset_bottom = 467.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Genuinely please read everything first"
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("1_omtrn")
+theme_override_font_sizes/font_size = 125
+theme_override_styles/disabled = ExtResource("2_i6t4g")
+theme_override_styles/hover_pressed = ExtResource("2_i6t4g")
+theme_override_styles/hover = ExtResource("2_i6t4g")
+theme_override_styles/pressed = ExtResource("2_i6t4g")
+theme_override_styles/normal = ExtResource("3_p8jf4")
+text = "Start Game!"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

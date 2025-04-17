@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://la4tytya31qc"]
+
+[ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="1_ns7x2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqj1b"]
+bg_color = Color(0.125777, 0.287835, 0.335684, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4x22c"]
+bg_color = Color(0.360784, 0.654902, 0.752941, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.646435, 0.851602, 0.924843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vqe4"]
+bg_color = Color(0.12549, 0.286275, 0.337255, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfql0"]
+bg_color = Color(0.361627, 0.656812, 0.753033, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[resource]
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_ns7x2")
+Button/styles/disabled = SubResource("StyleBoxFlat_dqj1b")
+Button/styles/hover = SubResource("StyleBoxFlat_dqj1b")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_dqj1b")
+Button/styles/normal = SubResource("StyleBoxFlat_4x22c")
+Button/styles/pressed = SubResource("StyleBoxFlat_dqj1b")
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_ns7x2")
+ProgressBar/constants/outline_size = 8
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/fonts/font = ExtResource("1_ns7x2")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0vqe4")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qfql0")

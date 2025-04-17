@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ca7p81mdwl03y"]
+
+[ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="1_dksi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4x22c"]
+bg_color = Color(0.249945, 0.265946, 0.272754, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dksi7"]
+bg_color = Color(0.788235, 0.803922, 0.811765, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vqe4"]
+bg_color = Color(0.25098, 0.266667, 0.27451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfql0"]
+bg_color = Color(0.788115, 0.803676, 0.811499, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+
+[resource]
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_dksi7")
+Button/styles/disabled = SubResource("StyleBoxFlat_4x22c")
+Button/styles/hover = SubResource("StyleBoxFlat_4x22c")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_4x22c")
+Button/styles/normal = SubResource("StyleBoxFlat_dksi7")
+Button/styles/pressed = SubResource("StyleBoxFlat_4x22c")
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_dksi7")
+ProgressBar/constants/outline_size = 8
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/fonts/font = ExtResource("1_dksi7")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0vqe4")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qfql0")
