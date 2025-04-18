@@ -14,3 +14,8 @@ func _on_exit_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	options.show()
+
+@onready var tips: Control = $tips
+
+func _on_tut_pressed() -> void:
+	tips.show()

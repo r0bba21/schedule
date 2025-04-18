@@ -448,6 +448,7 @@ alignment = 1
 
 [node name="K" type="Label" parent="Stats/STATS"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.709804, 0.862745, 0.592157, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_nlp2w")
 theme_override_font_sizes/font_size = 40
@@ -457,6 +458,7 @@ vertical_alignment = 1
 
 [node name="PK" type="Label" parent="Stats/STATS"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.803922, 0.670588, 0.87451, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_nlp2w")
 theme_override_font_sizes/font_size = 40
@@ -466,6 +468,7 @@ vertical_alignment = 1
 
 [node name="M" type="Label" parent="Stats/STATS"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.85098, 0.92549, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_nlp2w")
 theme_override_font_sizes/font_size = 40
