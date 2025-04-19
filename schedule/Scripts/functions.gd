@@ -9,11 +9,8 @@ func _on_sleep_pressed() -> void:
 	soundfx()
 	if Global.sleep_available != false:
 		Global.sleep_initiated = true
+		Global.sleep_anim = true
 		print("Slept!")
-
-# COMPANY LOGO:
-func _on_logo_item_selected(index: int) -> void: # Do last
-	pass # Replace with function body.
 
 # ROOM:
 func _on_walls_color_changed(color: Color) -> void:

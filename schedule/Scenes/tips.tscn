@@ -44,9 +44,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 787.0
-offset_top = 156.0
+offset_top = 949.0
 offset_right = -787.0
-offset_bottom = 241.0
+offset_bottom = 1034.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_5ut0c")
@@ -57,5 +57,35 @@ theme_override_styles/hover = ExtResource("3_q24wt")
 theme_override_styles/pressed = ExtResource("3_q24wt")
 theme_override_styles/normal = ExtResource("4_yet2m")
 text = "Exit"
+
+[node name="Exposition" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -793.5
+offset_top = -293.5
+offset_right = 793.5
+offset_bottom = 293.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 13
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_5ut0c")
+theme_override_font_sizes/font_size = 40
+text = "- Bulk orders are a great way to make money fast and early on
+- Make sure to keep packaging materials stocked up
+- Deliveries take longer based on the amount you order
+- Do deliveries in bulk so the $10 fee doesn't hit as hard
+- Dealers aren't usually required until meth at the very least
+- Sleeping is great because you will wake up with new bulk orders and a demand refresh
+- Demand refreshes daily, once the daily demand is met sales slow down a lot
+- There are tooltips if you hover over things in research menu
+- Staff just plant / start cooking one batch every 10 seconds and package goods
+- Please do the feedback form so I know what else to add here"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]

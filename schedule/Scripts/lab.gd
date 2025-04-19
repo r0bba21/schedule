@@ -70,6 +70,9 @@ var col_stored = Color.BLACK
 @onready var tvM: MeshInstance3D = $lab_ver2/TV
 
 func _process(delta: float) -> void:
+	if Global.sleep_anim != false:
+		sleep_screen()
+		Global.sleep_anim = false
 	cauldron.visible = Global.coke_unlock
 	chem_table.visible = Global.meth_unlock
 	oven_table.visible = Global.meth_unlock
@@ -78,7 +81,8 @@ func _process(delta: float) -> void:
 	oven_imp.use_collision = Global.meth_unlock
 	if Global.room_col != Color.BLACK and col_stored != Global.room_col:
 		col_stored = Global.room_col
-		print("Fix your stupid wall painter")
+		var material:StandardMaterial3D = load("res://Assets_Other/walls.tres") as StandardMaterial3D
+		material.albedo_color = col_stored
 	match Global.tv_off:
 		true:
 			tvM.set_surface_override_material(1, load("res://Assets_Other/deadtv.tres") as StandardMaterial3D)
@@ -102,3 +106,18 @@ func _ready() -> void:
 			Engine.time_scale = 0
 			tutorial.show()
 			soundfx()
+
+@onready var sleep: Control = $SLEEP
+
+func sleep_screen():
+	sleep.show()
+	var timer:Timer = Timer.new()
+	timer.wait_time = 3
+	timer.one_shot = true
+	add_child(timer)
+	timer.timeout.connect(sleep_hide.bind(timer))
+	timer.start()
+
+func sleep_hide(timer: Timer):
+	timer.queue_free()
+	sleep.hide()

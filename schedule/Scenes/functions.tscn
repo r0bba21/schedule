@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blwh5hv2pfq6x"]
+[gd_scene load_steps=16 format=3 uid="uid://blwh5hv2pfq6x"]
 
 [ext_resource type="Script" uid="uid://c3b6dw2v04ecs" path="res://Scripts/functions.gd" id="1_duuod"]
 [ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="1_nlp2w"]
@@ -55,25 +55,6 @@ bg_color = Color(0.442151, 0.587235, 0.646636, 1)
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.678573, 0.793185, 0.840725, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jf0m"]
-bg_color = Color(0.141176, 0.215686, 0.243137, 1)
-border_color = Color(0.678431, 0.792157, 0.839216, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bitwl"]
-bg_color = Color(0.443137, 0.588235, 0.647059, 1)
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.678431, 0.792157, 0.839216, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -223,21 +204,6 @@ text = "Customise Company:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exposition" type="Label" parent="Company"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 82.0
-offset_bottom = 189.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("1_nlp2w")
-theme_override_font_sizes/font_size = 40
-text = "Change your character's name, your
-company's name and its logo:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CusComp" type="VBoxContainer" parent="Company"]
 layout_mode = 1
 anchors_preset = 15
@@ -271,21 +237,30 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tccup")
 placeholder_text = "Company Name"
 alignment = 1
 
-[node name="LOGO" type="OptionButton" parent="Company/CusComp"]
-layout_mode = 2
-theme_override_constants/outline_size = 12
+[node name="K2" type="Label" parent="Company"]
+offset_left = 45.0
+offset_top = 318.0
+offset_right = 321.0
+offset_bottom = 365.0
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_nlp2w")
-theme_override_font_sizes/font_size = 35
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7jf0m")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7jf0m")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7jf0m")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jf0m")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bitwl")
-alignment = 1
-selected = 0
-item_count = 1
-popup/item_0/text = "None"
-popup/item_0/id = 0
+theme_override_font_sizes/font_size = 40
+text = " Theme Colour:"
+vertical_alignment = 1
+
+[node name="WALLS" type="ColorPickerButton" parent="Company/K2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -24.5
+offset_right = 558.0
+offset_bottom = 25.5
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Room" type="Panel" parent="."]
 layout_mode = 0
@@ -514,7 +489,6 @@ bus = &"SFX"
 [connection signal="pressed" from="Sleep/SLEEP" to="." method="_on_sleep_pressed"]
 [connection signal="text_changed" from="Company/CusComp/F" to="." method="soundfx"]
 [connection signal="text_changed" from="Company/CusComp/C" to="." method="soundfx"]
-[connection signal="item_selected" from="Company/CusComp/LOGO" to="." method="_on_logo_item_selected"]
 [connection signal="color_changed" from="Room/VBoxContainer/K2/WALLS" to="." method="_on_walls_color_changed"]
 [connection signal="item_selected" from="Room/VBoxContainer/K3/TV" to="." method="_on_tv_item_selected"]
 [connection signal="item_selected" from="Room/VBoxContainer/K4/POTS" to="." method="_on_pots_item_selected"]

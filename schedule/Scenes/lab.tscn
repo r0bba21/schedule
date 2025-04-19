@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpsvctcfaquev"]
+[gd_scene load_steps=18 format=3 uid="uid://bpsvctcfaquev"]
 
 [ext_resource type="Script" uid="uid://d0lkxidy86cs2" path="res://Scripts/lab.gd" id="1_b7lmg"]
 [ext_resource type="PackedScene" uid="uid://d2fwxk8h8of2u" path="res://CharacterController.tscn" id="1_h3xp2"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://fjeetts18p17" path="res://Scenes/production.tscn" id="3_x8gvj"]
 [ext_resource type="PackedScene" uid="uid://5bwohuat633p" path="res://Scenes/paused.tscn" id="4_m11ee"]
 [ext_resource type="PackedScene" uid="uid://drw0dqac4xb5q" path="res://BLENDER/lab_ver2.blend" id="5_x8gvj"]
+[ext_resource type="Material" uid="uid://brk022uvya0a" path="res://Assets_Other/walls.tres" id="5_xrdmp"]
 [ext_resource type="PackedScene" uid="uid://blwh5hv2pfq6x" path="res://Scenes/functions.tscn" id="6_4w5lu"]
 [ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="6_6jcdl"]
 [ext_resource type="PackedScene" uid="uid://bmg1grkwgls3g" path="res://Scenes/tutorial.tscn" id="7_p5ity"]
+[ext_resource type="PackedScene" uid="uid://sblmjsw65yr3" path="res://Scenes/sleep.tscn" id="8_p5ity"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7lmg"]
 sky_top_color = Color(1, 1, 1, 1)
@@ -42,6 +44,8 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 shadow_size = 10
 
+[sub_resource type="VoxelGIData" id="VoxelGIData_xrdmp"]
+
 [node name="Lab" type="Node3D"]
 script = ExtResource("1_b7lmg")
 
@@ -55,10 +59,10 @@ use_collision = true
 size = Vector3(17.5187, 0.100891, 15.4519)
 
 [node name="Roof" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57608, 8.71725, -9.08677)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57608, 8.20561, -9.08677)
 layers = 0
 use_collision = true
-size = Vector3(17.5187, 0.100891, 15.4519)
+size = Vector3(17.5187, 1.12418, 15.4519)
 
 [node name="InnerWall" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71562, 4.69193, -9.22509)
@@ -144,6 +148,12 @@ bus = &"SFX"
 
 [node name="lab_ver2" parent="." instance=ExtResource("5_x8gvj")]
 
+[node name="Bowl_003" parent="lab_ver2" index="13"]
+transform = Transform3D(0.120338, 0, 0.220534, 0, 0.214181, 0, -0.220534, 0, 0.120338, 3.98223, 1.76797, -7.36644)
+
+[node name="Walls" parent="lab_ver2" index="23"]
+surface_material_override/0 = ExtResource("5_xrdmp")
+
 [node name="Production" parent="." instance=ExtResource("3_x8gvj")]
 visible = false
 
@@ -151,6 +161,9 @@ visible = false
 visible = false
 
 [node name="Tutorial" parent="." instance=ExtResource("7_p5ity")]
+
+[node name="SLEEP" parent="." instance=ExtResource("8_p5ity")]
+visible = false
 
 [node name="Paused" parent="." instance=ExtResource("4_m11ee")]
 visible = false
@@ -170,6 +183,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_tlooe")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tlooe")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4w5lu")
 text = "I'm Stuck!"
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65932, 1.36725, -9.34134)
+size = Vector3(20, 22.7345, 20)
+data = SubResource("VoxelGIData_xrdmp")
 
 [connection signal="pressed" from="Paused/Stuck" to="." method="_on_stuck_pressed"]
 

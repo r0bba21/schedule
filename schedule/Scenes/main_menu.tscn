@@ -77,18 +77,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ce3w2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ce3w2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
-text = "New Game"
-
-[node name="Load" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_48xlc")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/disabled = SubResource("StyleBoxFlat_ce3w2")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ce3w2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ce3w2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
-text = "Load Game"
+text = "Play"
 
 [node name="Bug" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -144,7 +133,6 @@ bus = &"SFX"
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Load" to="." method="load_pressed"]
 [connection signal="pressed" from="VBoxContainer/Bug" to="." method="_on_bug_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

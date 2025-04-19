@@ -1413,7 +1413,7 @@ func meth_sale_complete(demanded: int, price: int, button: Button, timer: Timer,
 
 # COCAINE:
 @export var leaves_price:int = 150
-@export var coke_price:int = 100
+@export var coke_price:int = 115
 @export var cauldrons:int = 1
 @export var coke_yield:int = 12
 @export var coke_leaves:int = 0
@@ -1782,3 +1782,28 @@ func coke_staff():
 			print("Cauldron started BY STAFF")
 			refresh_coke_ui()
 		_on_pack_coke_pressed()
+
+# KB SHORTCUTS:
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Kush"):
+		exit_ui()
+		_on_kush_pressed()
+	if event.is_action_pressed("PKush") and Global.purple_unlock != false:
+		exit_ui()
+		open_purp()
+	if event.is_action_pressed("Meth") and Global.meth_unlock != false:
+		exit_ui()
+		open_meth()
+	if event.is_action_pressed("Coke") and Global.coke_unlock != false:
+		exit_ui()
+		open_coke()
+	if event.is_action_pressed("DLV"):
+		exit_ui()
+		open_deliveries()
+	if event.is_action_pressed("Sale"):
+		exit_ui()
+		_on_sale_pressed()
+	if event.is_action_pressed("Research"):
+		exit_ui()
+		open_research()

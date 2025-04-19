@@ -5,10 +5,6 @@ func _on_play_pressed() -> void:
 	soundfx()
 	get_tree().change_scene_to_file("res://Scenes/lab.tscn")
 
-func load_pressed() -> void: # Add me later!
-	Global.loading_game = true
-	soundfx()
-
 func _on_quit_pressed() -> void:
 	soundfx()
 	get_tree().quit()
