@@ -9,6 +9,7 @@ var sleep_skips_day:bool = true
 var sleep_initiated:bool = false
 var loading_game:bool = false
 var sleep_anim:bool = false
+var playing_mobile:bool = false
 
 # PLAYER PROGRESS - Use later to show things in 3D scene:
 @export var purple_unlock:bool = false

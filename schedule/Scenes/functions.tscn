@@ -238,6 +238,7 @@ placeholder_text = "Company Name"
 alignment = 1
 
 [node name="K2" type="Label" parent="Company"]
+layout_mode = 0
 offset_left = 45.0
 offset_top = 318.0
 offset_right = 321.0

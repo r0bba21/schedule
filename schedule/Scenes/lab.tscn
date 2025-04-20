@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bpsvctcfaquev"]
+[gd_scene load_steps=22 format=3 uid="uid://bpsvctcfaquev"]
 
 [ext_resource type="Script" uid="uid://d0lkxidy86cs2" path="res://Scripts/lab.gd" id="1_b7lmg"]
 [ext_resource type="PackedScene" uid="uid://d2fwxk8h8of2u" path="res://CharacterController.tscn" id="1_h3xp2"]
@@ -11,6 +11,10 @@
 [ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="6_6jcdl"]
 [ext_resource type="PackedScene" uid="uid://bmg1grkwgls3g" path="res://Scenes/tutorial.tscn" id="7_p5ity"]
 [ext_resource type="PackedScene" uid="uid://sblmjsw65yr3" path="res://Scenes/sleep.tscn" id="8_p5ity"]
+[ext_resource type="Script" uid="uid://cfa4kqtsy4sun" path="res://Scripts/exit_prod_mobile.gd" id="10_dyeqn"]
+[ext_resource type="Script" uid="uid://d3e6r23gdmjkp" path="res://Scripts/mobile.gd" id="12_nc3jc"]
+[ext_resource type="StyleBox" uid="uid://bjnhxgm2kx5p8" path="res://UI/button1_hover.tres" id="13_dyeqn"]
+[ext_resource type="StyleBox" uid="uid://bujsgxjnybvkm" path="res://UI/button1.tres" id="14_oub4g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7lmg"]
 sky_top_color = Color(1, 1, 1, 1)
@@ -155,12 +159,49 @@ transform = Transform3D(0.120338, 0, 0.220534, 0, 0.214181, 0, -0.220534, 0, 0.1
 surface_material_override/0 = ExtResource("5_xrdmp")
 
 [node name="Production" parent="." instance=ExtResource("3_x8gvj")]
+
+[node name="exit_prod_mobile" type="Button" parent="Production"]
 visible = false
+layout_mode = 1
+offset_left = 496.0
+offset_top = 30.0
+offset_right = 663.0
+offset_bottom = 115.0
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("6_6jcdl")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/disabled = ExtResource("13_dyeqn")
+theme_override_styles/hover_pressed = ExtResource("13_dyeqn")
+theme_override_styles/hover = ExtResource("13_dyeqn")
+theme_override_styles/pressed = ExtResource("13_dyeqn")
+theme_override_styles/normal = ExtResource("14_oub4g")
+text = "Exit"
+script = ExtResource("10_dyeqn")
 
 [node name="Functions" parent="." instance=ExtResource("6_4w5lu")]
 visible = false
 
+[node name="exit_func_mobile" type="Button" parent="Functions"]
+visible = false
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 179.0
+offset_bottom = 113.0
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("6_6jcdl")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/disabled = ExtResource("13_dyeqn")
+theme_override_styles/hover_pressed = ExtResource("13_dyeqn")
+theme_override_styles/hover = ExtResource("13_dyeqn")
+theme_override_styles/pressed = ExtResource("13_dyeqn")
+theme_override_styles/normal = ExtResource("14_oub4g")
+text = "Exit"
+script = ExtResource("10_dyeqn")
+
 [node name="Tutorial" parent="." instance=ExtResource("7_p5ity")]
+unique_name_in_owner = true
+visible = false
 
 [node name="SLEEP" parent="." instance=ExtResource("8_p5ity")]
 visible = false
@@ -189,6 +230,70 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65932, 1.36725, -9.34134)
 size = Vector3(20, 22.7345, 20)
 data = SubResource("VoxelGIData_xrdmp")
 
+[node name="MOBILE" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -494.0
+offset_right = 741.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_constants/separation = 25
+alignment = 1
+script = ExtResource("12_nc3jc")
+
+[node name="Title" type="Label" parent="MOBILE"]
+layout_mode = 2
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("6_6jcdl")
+theme_override_font_sizes/font_size = 60
+text = "Mobile:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mng" type="Button" parent="MOBILE"]
+layout_mode = 2
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("6_6jcdl")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/disabled = ExtResource("13_dyeqn")
+theme_override_styles/hover_pressed = ExtResource("13_dyeqn")
+theme_override_styles/hover = ExtResource("13_dyeqn")
+theme_override_styles/pressed = ExtResource("13_dyeqn")
+theme_override_styles/normal = ExtResource("14_oub4g")
+text = " Management Menu "
+
+[node name="fnc" type="Button" parent="MOBILE"]
+layout_mode = 2
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("6_6jcdl")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/disabled = ExtResource("13_dyeqn")
+theme_override_styles/hover_pressed = ExtResource("13_dyeqn")
+theme_override_styles/hover = ExtResource("13_dyeqn")
+theme_override_styles/pressed = ExtResource("13_dyeqn")
+theme_override_styles/normal = ExtResource("14_oub4g")
+text = "Function Menu"
+
+[node name="ps" type="Button" parent="MOBILE"]
+layout_mode = 2
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("6_6jcdl")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/disabled = ExtResource("13_dyeqn")
+theme_override_styles/hover_pressed = ExtResource("13_dyeqn")
+theme_override_styles/hover = ExtResource("13_dyeqn")
+theme_override_styles/pressed = ExtResource("13_dyeqn")
+theme_override_styles/normal = ExtResource("14_oub4g")
+text = "Pause Menu"
+
+[connection signal="pressed" from="Production/exit_prod_mobile" to="." method="_on_exit_prod_mobile_pressed"]
+[connection signal="pressed" from="Functions/exit_func_mobile" to="." method="_on_exit_func_mobile_pressed"]
 [connection signal="pressed" from="Paused/Stuck" to="." method="_on_stuck_pressed"]
+[connection signal="pressed" from="MOBILE/mng" to="." method="_on_mng_pressed"]
+[connection signal="pressed" from="MOBILE/fnc" to="." method="_on_fnc_pressed"]
+[connection signal="pressed" from="MOBILE/ps" to="." method="_on_ps_pressed"]
 
 [editable path="lab_ver2"]

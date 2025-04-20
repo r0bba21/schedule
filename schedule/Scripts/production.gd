@@ -486,7 +486,7 @@ func _on_package_choice_green_item_selected(index: int) -> void:
 	refresh_green_ui()
 
 # SELLING GREEN:
-var names:Array[String] = ["Big Robba", "Riley", "Willis", "Jason", "Magnus", "Liam", "Killian", "Abhay", "Kayley", "Joel", "Koby", "Sohan", "Arabella", "Millie", "Beau", "Piyush", "Big Savage", "Vecchio", "Finn", "Gabby", "Madi"] 
+var names:Array[String] = ["Big Robba", "Poo Jones", "Juhann", "Kevin", "Tyson", "Riley", "Willis", "Jason", "Magnus", "Liam", "Killian", "Abhay", "Kayley", "Joel", "Koby", "Sohan", "Arabella", "Millie", "Beau", "Piyush", "Big Savage", "Vecchio", "Finn", "Gabby", "Madi"] 
 
 func _on_sale_pressed() -> void: # Menu opener
 	soundfx(2)
@@ -630,10 +630,10 @@ func buy_purp_seeds(): # CART 2
 		print("Insufficient funds")
 
 func buy_fertiliser(): # CART 3
-	if money >= ((60 * DLV_actions) + sum) * dlv_factor:
+	if money >= ((40 * DLV_actions) + sum) * dlv_factor:
 		soundfx(2)
 		cart[3] += DLV_actions
-		sum += (60 * DLV_actions)
+		sum += (40 * DLV_actions)
 		refresh_dispatch()
 	else:
 		print("Insufficient funds")

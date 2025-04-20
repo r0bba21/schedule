@@ -79,6 +79,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
 text = "Play"
 
+[node name="Play2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
+text = "Play Mobile Version"
+
 [node name="Bug" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_48xlc")
@@ -117,7 +128,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 30
-text = "Thank you for playing!"
+text = "Thank you for playing! Build: PATCH 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -132,7 +143,34 @@ volume_db = 3.0
 bus = &"SFX"
 metadata/_edit_lock_ = true
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 417.0
+offset_right = 665.0
+offset_bottom = 527.0
+rotation = 0.7095
+theme_override_colors/font_color = Color(0.81502, 3.58574e-06, 7.70092e-07, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 80
+text = "!!!"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1317.0
+offset_top = 539.0
+offset_right = 1935.0
+offset_bottom = 626.0
+rotation = 0.333632
+theme_override_colors/font_color = Color(0.540644, 0.783157, 0.914939, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "Anyone who submits a legit feedback form
+gets their name added to the buyer list!"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play2" to="." method="play_mobile"]
 [connection signal="pressed" from="VBoxContainer/Bug" to="." method="_on_bug_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

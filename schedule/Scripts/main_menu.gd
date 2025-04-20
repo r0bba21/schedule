@@ -5,6 +5,10 @@ func _on_play_pressed() -> void:
 	soundfx()
 	get_tree().change_scene_to_file("res://Scenes/lab.tscn")
 
+func play_mobile():
+	Global.playing_mobile = true
+	_on_play_pressed()
+
 func _on_quit_pressed() -> void:
 	soundfx()
 	get_tree().quit()

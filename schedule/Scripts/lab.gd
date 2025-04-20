@@ -121,3 +121,32 @@ func sleep_screen():
 func sleep_hide(timer: Timer):
 	timer.queue_free()
 	sleep.hide()
+
+func _on_mng_pressed() -> void:
+	soundfx()
+	production.show()
+	Global.in_gui = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_fnc_pressed() -> void:
+	soundfx()
+	functions.show()
+	Global.in_func = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_ps_pressed() -> void:
+	soundfx()
+	paused.show()
+	Global.in_pause = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Engine.time_scale = 0
+
+func _on_exit_prod_mobile_pressed() -> void:
+	soundfx()
+	production.hide()
+	Global.in_gui = false
+
+func _on_exit_func_mobile_pressed() -> void:
+	soundfx()
+	functions.hide()
+	Global.in_func = false
