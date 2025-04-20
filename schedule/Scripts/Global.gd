@@ -40,3 +40,4 @@ var total_rev:int = 0
 var room_col:Color = Color.BLACK
 var tv_off:bool = true
 var pots:bool = true
+var comp_name:String = "COMPANY"

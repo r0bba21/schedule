@@ -1,12 +1,12 @@
-[gd_scene load_steps=45 format=3 uid="uid://fjeetts18p17"]
+[gd_scene load_steps=59 format=3 uid="uid://fjeetts18p17"]
 
 [ext_resource type="Script" uid="uid://bwlal8smk7cqr" path="res://Scripts/production.gd" id="1_1814h"]
 [ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="2_1rhnv"]
 [ext_resource type="AudioStream" uid="uid://b25nyv8gw28ct" path="res://Assets_Other/Kaching.mp3" id="2_nl5nu"]
 [ext_resource type="AudioStream" uid="uid://xc8qn3nmw3n5" path="res://Assets_Other/Select.mp3" id="3_63f7c"]
 [ext_resource type="AudioStream" uid="uid://dgk5a58abgr" path="res://Assets_Other/Buzz.mp3" id="4_lwwcs"]
+[ext_resource type="Texture2D" uid="uid://bm6aoe3c2hnbc" path="res://UI_Assets/info.png" id="6_8qcu4"]
 [ext_resource type="Texture2D" uid="uid://cv762jxyi6iet" path="res://UI_Assets/hazard-sign.png" id="6_ccf76"]
-[ext_resource type="Texture2D" uid="uid://n4wnc0457wso" path="res://UI_Assets/padlock.png" id="6_clqt6"]
 [ext_resource type="Texture2D" uid="uid://cf00fh3fenat6" path="res://UI_Assets/big (1).png" id="6_v8ar5"]
 [ext_resource type="Texture2D" uid="uid://xb8n14ohgop8" path="res://UI_Assets/cancel.png" id="7_3peat"]
 [ext_resource type="Texture2D" uid="uid://g2qn7igbbct8" path="res://UI_Assets/big (2).png" id="7_fdmqb"]
@@ -20,11 +20,23 @@
 [ext_resource type="StyleBox" uid="uid://bujsgxjnybvkm" path="res://UI/button1.tres" id="12_y1v57"]
 [ext_resource type="StyleBox" uid="uid://bjnhxgm2kx5p8" path="res://UI/button1_hover.tres" id="13_nl5nu"]
 [ext_resource type="Texture2D" uid="uid://b3twyja0onj3m" path="res://UI_Assets/alarm-clock.png" id="15_v8ar5"]
+[ext_resource type="Texture2D" uid="uid://br5d5nx4ado5g" path="res://UI_Assets/lock.png" id="16_toemw"]
 [ext_resource type="Texture2D" uid="uid://b48ugqlm02u21" path="res://UI_Assets/shopping-cart (1).png" id="19_fdmqb"]
 [ext_resource type="Theme" uid="uid://ww4po0qa5hof" path="res://UI/sale.tres" id="20_eu05i"]
+[ext_resource type="Texture2D" uid="uid://20a6qtpmj4qn" path="res://UI_Assets/seedling.png" id="20_iybx8"]
 [ext_resource type="Theme" uid="uid://bum6bqmkwtntj" path="res://UI/sale_purp.tres" id="21_ccf76"]
 [ext_resource type="Theme" uid="uid://la4tytya31qc" path="res://UI/sale_meth.tres" id="22_8qcu4"]
+[ext_resource type="Texture2D" uid="uid://ca8riky5n34vs" path="res://UI_Assets/packing.png" id="22_bmc6p"]
 [ext_resource type="Theme" uid="uid://ca7p81mdwl03y" path="res://UI/sale_coke.tres" id="23_toemw"]
+[ext_resource type="Texture2D" uid="uid://m4g7rri0w3bx" path="res://UI_Assets/baggies.png" id="24_ijr6c"]
+[ext_resource type="Texture2D" uid="uid://b0mu8kdqkayvw" path="res://UI_Assets/jars.png" id="25_i8g58"]
+[ext_resource type="Texture2D" uid="uid://ckrhcaol4ctct" path="res://UI_Assets/bricks.png" id="26_agtbq"]
+[ext_resource type="Texture2D" uid="uid://bhs1sgmjuohmj" path="res://UI_Assets/furnace.png" id="27_khk5n"]
+[ext_resource type="Texture2D" uid="uid://bfw6foplvuaft" path="res://UI_Assets/cauldron.png" id="28_4xy6q"]
+[ext_resource type="Texture2D" uid="uid://botpmdlxsxpc2" path="res://UI_Assets/bulk.png" id="29_seaed"]
+[ext_resource type="Texture2D" uid="uid://chpcep0sffey0" path="res://UI_Assets/dlv.png" id="34_2bx6l"]
+[ext_resource type="Texture2D" uid="uid://duqjml308rasd" path="res://UI_Assets/info35.png" id="34_bmc6p"]
+[ext_resource type="Texture2D" uid="uid://xw2xukyeab75" path="res://UI_Assets/unlocking.png" id="36_gxur7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aen41"]
 bg_color = Color(0, 0, 0, 0.0980392)
@@ -35,6 +47,9 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vf5mu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwwcs"]
 bg_color = Color(0.150021, 0.250595, 0.221947, 0.752941)
@@ -112,6 +127,9 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iybx8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yo8xg"]
 content_margin_top = 4.0
@@ -350,6 +368,28 @@ text = "Unfinished Product:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UNFINISHED_tooltip" type="Panel" parent="Stock/UNFINISHED"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Product that is currently growing or being cooked (eg: planted weed)"
+theme_override_styles/panel = SubResource("StyleBoxFlat_vf5mu")
+
+[node name="TextureRect" type="TextureRect" parent="Stock/UNFINISHED/UNFINISHED_tooltip"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -10.0
+offset_right = 23.0
+offset_bottom = 10.0
+grow_vertical = 2
+texture = ExtResource("6_8qcu4")
+
 [node name="unfinish" type="Label" parent="Stock"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.709804, 0.862745, 0.592157, 1)
@@ -421,6 +461,7 @@ offset_left = -46.0
 offset_right = -12.0
 grow_horizontal = 0
 grow_vertical = 2
+tooltip_text = "Make sure to keep your packaging in stock, you can't sell unpackaged product!"
 texture = ExtResource("6_ccf76")
 
 [node name="finish2" type="Label" parent="Stock"]
@@ -444,6 +485,7 @@ offset_left = -46.0
 offset_right = -12.0
 grow_horizontal = 0
 grow_vertical = 2
+tooltip_text = "Make sure to keep your packaging in stock, you can't sell unpackaged product!"
 texture = ExtResource("6_ccf76")
 
 [node name="finish3" type="Label" parent="Stock"]
@@ -467,6 +509,7 @@ offset_left = -46.0
 offset_right = -12.0
 grow_horizontal = 0
 grow_vertical = 2
+tooltip_text = "Make sure to keep your packaging in stock, you can't sell unpackaged product!"
 texture = ExtResource("6_ccf76")
 
 [node name="finish4" type="Label" parent="Stock"]
@@ -489,6 +532,7 @@ offset_left = -46.0
 offset_right = -12.0
 grow_horizontal = 0
 grow_vertical = 2
+tooltip_text = "Make sure to keep your packaging in stock, you can't sell unpackaged product!"
 texture = ExtResource("6_ccf76")
 
 [node name="PACKAGED" type="Label" parent="Stock"]
@@ -620,6 +664,7 @@ offset_left = 496.0
 offset_top = 503.0
 offset_right = 1184.0
 offset_bottom = 775.0
+tooltip_text = "Stock up on important materials"
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 70
@@ -650,6 +695,7 @@ offset_left = 1208.0
 offset_top = 503.0
 offset_right = 1896.0
 offset_bottom = 775.0
+tooltip_text = "Sell packaged product here whenever a customer offers a deal"
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 70
@@ -681,6 +727,7 @@ offset_left = 496.0
 offset_top = 799.0
 offset_right = 1896.0
 offset_bottom = 1056.0
+tooltip_text = "Grow and progress your empire"
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 70
@@ -694,30 +741,30 @@ text = "Research"
 
 [node name="Lock_Purple" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 852.0
-offset_top = 139.0
-offset_right = 1192.0
-offset_bottom = 479.0
+offset_left = 848.0
+offset_top = 135.0
+offset_right = 1188.0
+offset_bottom = 475.0
 tooltip_text = "LOCKED"
-texture = ExtResource("6_clqt6")
+texture = ExtResource("16_toemw")
 
 [node name="Lock_Meth" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1208.0
-offset_top = 139.0
-offset_right = 1548.0
-offset_bottom = 479.0
+offset_left = 1204.0
+offset_top = 135.0
+offset_right = 1544.0
+offset_bottom = 475.0
 tooltip_text = "LOCKED"
-texture = ExtResource("6_clqt6")
+texture = ExtResource("16_toemw")
 
 [node name="Lock_Coke" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1564.0
-offset_top = 139.0
-offset_right = 1904.0
-offset_bottom = 479.0
+offset_left = 1560.0
+offset_top = 135.0
+offset_right = 1900.0
+offset_bottom = 475.0
 tooltip_text = "LOCKED"
-texture = ExtResource("6_clqt6")
+texture = ExtResource("16_toemw")
 
 [node name="Time" type="Panel" parent="."]
 layout_mode = 1
@@ -852,6 +899,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("20_iybx8")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -864,6 +912,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("22_bmc6p")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -895,10 +944,13 @@ alignment = 1
 selected = 0
 item_count = 3
 popup/item_0/text = "Baggies"
+popup/item_0/icon = ExtResource("24_ijr6c")
 popup/item_0/id = 0
 popup/item_1/text = "Jars"
+popup/item_1/icon = ExtResource("25_i8g58")
 popup/item_1/id = 1
 popup/item_2/text = "Bricks"
+popup/item_2/icon = ExtResource("26_agtbq")
 popup/item_2/id = 2
 
 [node name="Info" type="VBoxContainer" parent="Kush_Manage"]
@@ -1079,6 +1131,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("20_iybx8")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -1091,6 +1144,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("22_bmc6p")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -1122,10 +1176,13 @@ alignment = 1
 selected = 0
 item_count = 3
 popup/item_0/text = "Baggies"
+popup/item_0/icon = ExtResource("24_ijr6c")
 popup/item_0/id = 0
 popup/item_1/text = "Jars"
+popup/item_1/icon = ExtResource("25_i8g58")
 popup/item_1/id = 1
 popup/item_2/text = "Bricks"
+popup/item_2/icon = ExtResource("26_agtbq")
 popup/item_2/id = 2
 
 [node name="Info" type="VBoxContainer" parent="Purp_Manage"]
@@ -1306,6 +1363,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("27_khk5n")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -1318,6 +1376,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("22_bmc6p")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -1349,10 +1408,13 @@ alignment = 1
 selected = 0
 item_count = 3
 popup/item_0/text = "Baggies"
+popup/item_0/icon = ExtResource("24_ijr6c")
 popup/item_0/id = 0
 popup/item_1/text = "Jars"
+popup/item_1/icon = ExtResource("25_i8g58")
 popup/item_1/id = 1
 popup/item_2/text = "Bricks"
+popup/item_2/icon = ExtResource("26_agtbq")
 popup/item_2/id = 2
 
 [node name="Info" type="VBoxContainer" parent="Meth_Manage"]
@@ -1533,6 +1595,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("28_4xy6q")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -1545,6 +1608,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("22_bmc6p")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -1576,10 +1640,13 @@ alignment = 1
 selected = 0
 item_count = 3
 popup/item_0/text = "Baggies"
+popup/item_0/icon = ExtResource("24_ijr6c")
 popup/item_0/id = 0
 popup/item_1/text = "Jars"
+popup/item_1/icon = ExtResource("25_i8g58")
 popup/item_1/id = 1
 popup/item_2/text = "Bricks"
+popup/item_2/icon = ExtResource("26_agtbq")
 popup/item_2/id = 2
 
 [node name="Info" type="VBoxContainer" parent="Coke_Manage"]
@@ -1714,7 +1781,7 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
-text = "You can only sell packaged product on the market and the amount you can sell depends on the demand."
+text = "You can only sell packaged product on the market. Offers from your buyers spawn here."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1747,7 +1814,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 50
-text = "Demand:"
+text = "Deal Offers:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1767,7 +1834,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 50
-text = "In Progress:"
+text = "Deals in Progress:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1778,7 +1845,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 168.0
-offset_top = -89.0
+offset_top = -98.0
 offset_right = -168.0
 offset_bottom = -9.0
 grow_horizontal = 2
@@ -1786,6 +1853,7 @@ grow_vertical = 0
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 55
+theme_override_icons/icon = ExtResource("29_seaed")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -1833,6 +1901,22 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
 text = "You get one bulk order per product type daily, they buy between 20-40 units for 80% of the usual price."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exposition2" type="Label" parent="Bulk_Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 766.0
+offset_right = 2.0
+offset_bottom = 819.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "Still full of product? There's always a bigger fish:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1932,6 +2016,168 @@ theme = ExtResource("23_toemw")
 theme_override_font_sizes/font_size = 60
 text = "00x Cocaine for $xx"
 
+[node name="BULK2" type="Button" parent="Bulk_Menu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 168.0
+offset_top = -98.0
+offset_right = -168.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 55
+theme_override_icons/icon = ExtResource("29_seaed")
+theme_override_styles/disabled = ExtResource("13_nl5nu")
+theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
+theme_override_styles/hover = ExtResource("13_nl5nu")
+theme_override_styles/pressed = ExtResource("13_nl5nu")
+theme_override_styles/normal = ExtResource("12_y1v57")
+text = "SUPER Bulk Orders"
+
+[node name="SUPER_Menu" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 139.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ye64w")
+
+[node name="Title" type="Label" parent="SUPER_Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 80
+text = "SUPER Bulk Orders:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exposition" type="Label" parent="SUPER_Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 100.0
+offset_right = 2.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 29
+text = "You get one SUPER bulk order per product type daily, buying between 40-60 units for 70% of market price."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="SUPER_Menu"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 92.0
+offset_bottom = 92.0
+theme_override_icons/icon = ExtResource("7_3peat")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rhnv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bv8h7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SUPER_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -585.0
+offset_top = -289.5
+offset_right = 585.0
+offset_bottom = 289.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SEEDS" type="Label" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+text = "Kush:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KUSH_sb" type="Button" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("20_eu05i")
+theme_override_font_sizes/font_size = 60
+text = "00x Kush for $xx"
+
+[node name="SEEDS2" type="Label" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+text = "Purple Kush:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PURP_sb" type="Button" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("21_ccf76")
+theme_override_font_sizes/font_size = 60
+text = "00x Purple Kush for $xx"
+
+[node name="SEEDS3" type="Label" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+text = "Meth:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="METH_sb" type="Button" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("22_8qcu4")
+theme_override_font_sizes/font_size = 60
+text = "00x Meth for $xx"
+
+[node name="SEEDS4" type="Label" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("2_1rhnv")
+theme_override_font_sizes/font_size = 45
+text = "Cocaine:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="COKE_sb" type="Button" parent="SUPER_Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("23_toemw")
+theme_override_font_sizes/font_size = 60
+text = "00x Cocaine for $xx"
+
 [node name="Delivery_Menu" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -1966,12 +2212,12 @@ anchor_right = 1.0
 offset_left = -1.0
 offset_top = 100.0
 offset_right = 2.0
-offset_bottom = 166.0
+offset_bottom = 151.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
-text = "This is where you buy ingredients, packaging, pots, cosmetics and more."
+text = "This is where you buy ingredients, packaging, production tools and more."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2192,9 +2438,27 @@ layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 29
-text = "Miscellaneous:"
+text = "Packaging:"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Delivery_Menu/Purchase3/Exposition2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Essential to keep these stocked up, jars hold 5 product and baggies hold 1."
+theme_override_styles/panel = SubResource("StyleBoxFlat_iybx8")
+
+[node name="TextureRect" type="TextureRect" parent="Delivery_Menu/Purchase3/Exposition2/Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 35.0
+grow_vertical = 2
+texture = ExtResource("34_bmc6p")
 
 [node name="Bags" type="Button" parent="Delivery_Menu/Purchase3"]
 layout_mode = 2
@@ -2241,6 +2505,7 @@ offset_left = 591.0
 offset_top = 155.0
 offset_right = 1388.0
 offset_bottom = 222.0
+tooltip_text = "This is the amount to add to your cart of each button you press"
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
@@ -2260,6 +2525,7 @@ tooltip_text = "Double check your order?"
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
+theme_override_icons/icon = ExtResource("34_2bx6l")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_yo8xg")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_yo8xg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yo8xg")
@@ -2272,7 +2538,7 @@ layout_mode = 2
 offset_left = 1038.0
 offset_top = 659.0
 offset_right = 1386.0
-offset_bottom = 726.0
+offset_bottom = 733.0
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 45
@@ -2515,6 +2781,7 @@ tooltip_text = "Unlocks new kush strain"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
+theme_override_icons/icon = ExtResource("36_gxur7")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -2612,6 +2879,7 @@ tooltip_text = "Purchases a chemistry set and allows you to make meth"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
+theme_override_icons/icon = ExtResource("36_gxur7")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -2722,6 +2990,7 @@ tooltip_text = "Buys a cauldron so you can start making cocaine"
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_1rhnv")
 theme_override_font_sizes/font_size = 30
+theme_override_icons/icon = ExtResource("36_gxur7")
 theme_override_styles/disabled = ExtResource("13_nl5nu")
 theme_override_styles/hover_pressed = ExtResource("13_nl5nu")
 theme_override_styles/hover = ExtResource("13_nl5nu")
@@ -3116,6 +3385,12 @@ text = "Continue"
 [connection signal="pressed" from="Bulk_Menu/VBoxContainer/PURP" to="." method="purp_bulk"]
 [connection signal="pressed" from="Bulk_Menu/VBoxContainer/METH" to="." method="meth_bulk"]
 [connection signal="pressed" from="Bulk_Menu/VBoxContainer/COKE" to="." method="coke_bulk"]
+[connection signal="pressed" from="Bulk_Menu/BULK2" to="." method="_on_bulk_2_pressed"]
+[connection signal="pressed" from="SUPER_Menu/Exit" to="." method="exit_ui"]
+[connection signal="pressed" from="SUPER_Menu/VBoxContainer/KUSH_sb" to="." method="kush_bulk_s"]
+[connection signal="pressed" from="SUPER_Menu/VBoxContainer/PURP_sb" to="." method="purp_bulk_s"]
+[connection signal="pressed" from="SUPER_Menu/VBoxContainer/METH_sb" to="." method="meth_bulk_s"]
+[connection signal="pressed" from="SUPER_Menu/VBoxContainer/COKE_sb" to="." method="coke_bulk_s"]
 [connection signal="pressed" from="Delivery_Menu/Exit" to="." method="exit_ui"]
 [connection signal="pressed" from="Delivery_Menu/Purchase/GreenSeeds" to="." method="_on_buy_seeds_pressed"]
 [connection signal="pressed" from="Delivery_Menu/Purchase/PurpSeeds" to="." method="buy_purp_seeds"]

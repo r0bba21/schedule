@@ -48,3 +48,6 @@ func _process(delta: float) -> void:
 	c.text = "Cocaine Sold: " + str(Global.coke_sales)
 	ts.text = "Total Sales: " + str(Global.kush_sales + Global.p_sales + Global.meth_sales + Global.coke_sales)
 	tr.text = "Total Cash: $" + str(Global.total_rev)
+
+func _on_c_text_changed(new_text: String) -> void:
+	Global.comp_name = new_text

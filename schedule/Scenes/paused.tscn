@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://5bwohuat633p"]
+[gd_scene load_steps=7 format=3 uid="uid://5bwohuat633p"]
 
 [ext_resource type="Script" uid="uid://bfba8q0bfkkh4" path="res://Scripts/paused.gd" id="1_fjnqb"]
 [ext_resource type="FontFile" uid="uid://clsljof7eceka" path="res://UI_Assets/trebuc.ttf" id="2_d3qyg"]
 [ext_resource type="PackedScene" uid="uid://h1wytnfqjfa8" path="res://Scenes/options.tscn" id="3_c3pqo"]
-[ext_resource type="PackedScene" uid="uid://d1nd6her423yn" path="res://Scenes/tips.tscn" id="4_vcs71"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3pqo"]
 bg_color = Color(1, 1, 1, 0.372549)
@@ -16,7 +15,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpxug"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.384314)
 border_width_bottom = 5
 corner_radius_top_left = 15
 corner_radius_top_right = 15
@@ -208,17 +207,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_vcs71")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wpxug")
 text = "Options"
 
-[node name="Tut" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_d3qyg")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/disabled = SubResource("StyleBoxFlat_vcs71")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vcs71")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vcs71")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vcs71")
-theme_override_styles/normal = SubResource("StyleBoxFlat_wpxug")
-text = "Tutorial Tips"
-
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_d3qyg")
@@ -234,11 +222,6 @@ text = "Main Menu"
 visible = false
 layout_mode = 1
 
-[node name="tips" parent="." instance=ExtResource("4_vcs71")]
-visible = false
-layout_mode = 1
-
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Tut" to="." method="_on_tut_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

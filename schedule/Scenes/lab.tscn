@@ -159,6 +159,7 @@ transform = Transform3D(0.120338, 0, 0.220534, 0, 0.214181, 0, -0.220534, 0, 0.1
 surface_material_override/0 = ExtResource("5_xrdmp")
 
 [node name="Production" parent="." instance=ExtResource("3_x8gvj")]
+visible = false
 
 [node name="exit_prod_mobile" type="Button" parent="Production"]
 visible = false
@@ -288,6 +289,12 @@ theme_override_styles/hover = ExtResource("13_dyeqn")
 theme_override_styles/pressed = ExtResource("13_dyeqn")
 theme_override_styles/normal = ExtResource("14_oub4g")
 text = "Pause Menu"
+
+[node name="COMPANY_NAME" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.716, 5.47671, -1.77769)
+text = "COMPANY"
+font = ExtResource("6_6jcdl")
+font_size = 100
 
 [connection signal="pressed" from="Production/exit_prod_mobile" to="." method="_on_exit_prod_mobile_pressed"]
 [connection signal="pressed" from="Functions/exit_func_mobile" to="." method="_on_exit_func_mobile_pressed"]

@@ -68,6 +68,8 @@ var col_stored = Color.BLACK
 @onready var pots: CSGBox3D = $Pots
 @onready var pot: MeshInstance3D = $lab_ver2/Pot
 @onready var tvM: MeshInstance3D = $lab_ver2/TV
+@onready var company_name: Label3D = $COMPANY_NAME
+var name_logged:String = "COMPANY"
 
 func _process(delta: float) -> void:
 	if Global.sleep_anim != false:
@@ -79,6 +81,9 @@ func _process(delta: float) -> void:
 	cauldron_imp.use_collision = Global.coke_unlock
 	chem_imp.use_collision = Global.meth_unlock
 	oven_imp.use_collision = Global.meth_unlock
+	if Global.comp_name != "COMPANY" and name_logged != Global.comp_name:
+		company_name.text = Global.comp_name
+		name_logged = Global.comp_name
 	if Global.room_col != Color.BLACK and col_stored != Global.room_col:
 		col_stored = Global.room_col
 		var material:StandardMaterial3D = load("res://Assets_Other/walls.tres") as StandardMaterial3D

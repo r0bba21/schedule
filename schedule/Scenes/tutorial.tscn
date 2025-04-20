@@ -80,10 +80,9 @@ theme_override_font_sizes/font_size = 40
 text = "In this game, you run a drug empire in your bedroom:
 Your trusty old Uncle Walt has given you 10 kush seeds and $200 to start with.
 To grow your empire, press 'E' to enter the management menu.
-To control your character, press 'F' to open the function menu.
-Feel free to walk around your room in your free time.
-Press 'ESC' to access the pause menu and press the tutorial button for tips.
-If your mouse ever goes missing or if you ever get stuck press 'ESC' and 'I'm Stuck'.
+Press 'F' to open the function menu for cosmetics, tips and to sleep.
+Press 'ESC' to access the pause menu.
+If your cursor ever goes missing or if you ever get stuck press 'ESC' and 'I'm Stuck'.
 HAVE FUN AND GOOD LUCK!"
 horizontal_alignment = 1
 vertical_alignment = 1

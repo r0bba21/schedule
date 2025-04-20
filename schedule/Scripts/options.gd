@@ -92,3 +92,19 @@ func _on_fps_item_selected(index: int) -> void:
 func _on_autosave_item_selected(index: int) -> void:
 	Global.autosave = index
 	soundfx()
+
+func _on_mobile_item_selected(index: int) -> void:
+	match index:
+		0:
+			Global.playing_mobile = true
+		1:
+			Global.playing_mobile = false
+
+@onready var mobile: OptionButton = $Panel/Options/Label11/mobile
+
+func _ready() -> void:
+	match Global.playing_mobile:
+		true:
+			mobile.selected = 0
+		false:
+			mobile.selected = 1

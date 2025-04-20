@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	refresh_bulk_order()
+	refresh_sb()
 
 @onready var dlv_prog_two: ProgressBar = $Delivery/DLV_prog_two
 @onready var inprogdlv: Label = $Delivery_Menu/inprogdlv
@@ -172,6 +173,7 @@ func exit_ui(): # Every panel shares
 	meth_manage.hide()
 	coke_manage.hide()
 	bulk_menu.hide()
+	super_menu.hide()
 
 func _suffix(input: float):
 	var formatted_value:float
@@ -243,9 +245,9 @@ func minute():
 	if hours_as_int < 10 and hours_as_int != 0:
 		hours = "0" + str(hours_as_int)
 	
-	if hours_as_int >= 20 or hours_as_int < 6: # Sleep
+	if hours_as_int >= 19 or hours_as_int < 6: # Sleep
 		Global.sleep_available = true
-		if hours_as_int >= 20:
+		if hours_as_int >= 19:
 			Global.sleep_skips_day = true
 		else:
 			Global.sleep_skips_day = false
@@ -264,6 +266,7 @@ var dlv_factor:float = 1
 
 func day():
 	refresh_bulk_order()
+	refresh_sb()
 	dlv_factor = 1
 	days += 1
 	sold_today = 0 # Green
@@ -372,8 +375,8 @@ var green_unpackaged:int = 0
 var green_packaged:int = 0
 var pots:int = 4 # SHARE THESE WITH PURPLE
 var pots_inuse:int = 0 # SHARE THESE WITH PURPLE
-var g_d_u:int = 60
-var g_d_l:int = 30
+var g_d_u:int = 65
+var g_d_l:int = 35
 var green_demand:int = randi_range(g_d_l,g_d_u)
 var green_action_amount:int = 1
 @export var green_seed_price:int = 75
@@ -585,11 +588,20 @@ func _on_sale_timer_timeout(demanded: int, price: int, button: Button, timer: Ti
 func green_timer_refresh(): # Timer is one-shot so this will change length (randomise) and then loop
 	var low:int = randi_range(15,30)
 	var high:int = randi_range(30,35)
+	var edited_time:bool = false
 	green_demand_Timer.wait_time = randi_range(low,high)
-	if (green_demand - sold_today) > (green_demand * .65):
+	if (green_demand - sold_today) > (green_demand * .65) and edited_time != true:
 		green_demand_Timer.wait_time /= 2
-	if (green_demand - sold_today) > (green_demand * .5) and (green_demand - sold_today) < (green_demand * .65):
+		edited_time = true
+	if green_packaged > 250 and edited_time != true:
+		green_demand_Timer.wait_time /= 2
+		edited_time = true
+	if (green_demand - sold_today) > (green_demand * .5) and edited_time != true:
 		green_demand_Timer.wait_time /= 1.5
+		edited_time = true
+	if green_packaged > 100 and edited_time != true:
+		green_demand_Timer.wait_time /= 1.5
+		edited_time = true
 	green_demand_Timer.start()
 
 # DELIVERIES: - Missing coke and meth
@@ -997,8 +1009,8 @@ var purp_unfinished:int = 0
 var purp_unpackaged:int = 0
 var purp_packaged:int = 0
 var fertiliser:int = 0
-var p_d_l:int = 40
-var p_d_u:int = 60
+var p_d_l:int = 45
+var p_d_u:int = 70
 var PURP_demand:int = randi_range(p_d_l,p_d_u)
 var purp_higher:int = 60
 var purp_lower:int = 40
@@ -1113,11 +1125,19 @@ var awaiting_sales:int = 0
 func purp_timer_refresh():
 	var low:int = randi_range(30,40)
 	var high:int = randi_range(40,50)
+	var time_edited:bool = false
 	purple_demand.wait_time = randi_range(low,high)
-	if (PURP_demand - sold_today_p) > (PURP_demand * 0.65):
+	if (PURP_demand - sold_today_p) > (PURP_demand * 0.65) and time_edited != true:
 		purple_demand.wait_time /= 2
-	if (PURP_demand - sold_today_p) > (PURP_demand * 0.5) and (PURP_demand - sold_today_p) < (PURP_demand * 0.65):
+		time_edited = true
+	if purp_packaged > 250 and time_edited != true:
+		purple_demand.wait_time /= 2
+		time_edited = true
+	if (PURP_demand - sold_today_p) > (PURP_demand * 0.5) and time_edited != true:
 		purple_demand.wait_time /= 1.5
+	if purp_packaged > 100 and time_edited != true:
+		purple_demand.wait_time /= 1.5
+		time_edited = true
 	purple_demand.start()
 
 func purp_demanded():
@@ -1135,7 +1155,7 @@ func purp_demanded():
 	kill_switch.start()
 	var button:Button = Button.new()
 	var name_picked:int = randi_range(0, names.size() - 1)
-	var raw_price:float = demanded * PURP_sale_price * randf_range(0.9, 1.15)
+	var raw_price:float = demanded * PURP_sale_price * randf_range(0.85, 1.1)
 	var price:int = round(raw_price)
 	button.text = "%s: %dx Purple Kush for $%d" % [names[name_picked], demanded, price]
 	button.theme = load("res://UI/sale_purp.tres") as Theme
@@ -1209,8 +1229,8 @@ func _on_purp_timer_timeout(demanded: int, price: int, button: Button, timer: Ti
 var chem_tables_avl:int = 1
 var active_meth_batches:int = 0
 @export var meth_yield:int = 8
-var m_d_l:int = 40
-var m_d_u:int = 60
+var m_d_l:int = 45
+var m_d_u:int = 65
 var meth_demand:int = randi_range(m_d_l,m_d_u)
 var cook_lower:int = 45
 var cook_higher:int = 60
@@ -1323,11 +1343,20 @@ var meth_sold_today:int = 0
 func refresh_meth_timer():
 	var low:int = randi_range(40,50)
 	var high:int = randi_range(50,60)
+	var time_edited:bool = false
 	meth_demandTimer.wait_time = randi_range(low,high)
-	if (meth_demand - meth_sold_today) >= (meth_demand * .65):
+	if (meth_demand - meth_sold_today) >= (meth_demand * .65) and time_edited != true:
 		meth_demandTimer.wait_time /= 2
-	if (meth_demand - meth_sold_today) >= (meth_demand * .5) and (meth_demand - meth_sold_today) < (meth_demand * .65):
+		time_edited = true
+	if meth_packaged > 250 and time_edited != true:
+		meth_demandTimer.wait_time /= 2
+		time_edited = true
+	if (meth_demand - meth_sold_today) >= (meth_demand * .5) and time_edited != true:
 		meth_demandTimer.wait_time /= 1.5
+		time_edited = true
+	if meth_packaged > 100 and time_edited != true:
+		meth_demandTimer.wait_time /= 1.5
+		time_edited = true
 	meth_demandTimer.start()
 
 func meth_demanded() -> void:
@@ -1345,7 +1374,7 @@ func meth_demanded() -> void:
 	kill_switch.start()
 	var button:Button = Button.new()
 	var name_picked:int = randi_range(0, names.size() - 1)
-	var raw_price:float = demanded * crystal_price * randf_range(0.9, 1.15)
+	var raw_price:float = demanded * crystal_price * randf_range(0.85, 1.1)
 	var price:int = round(raw_price)
 	button.text = "%s: %dx Meth for $%d" % [names[name_picked], demanded, price]
 	button.theme = load("res://UI/sale_meth.tres") as Theme
@@ -1420,8 +1449,8 @@ func meth_sale_complete(demanded: int, price: int, button: Button, timer: Timer,
 var coke_unfinished:int = 0
 var coke_unpackaged:int = 0
 var coke_packaged:int = 0
-var c_d_l:int = 30
-var c_d_u:int = 60
+var c_d_l:int = 35
+var c_d_u:int = 65
 var coke_demand:int = randi_range(c_d_l,c_d_u)
 var coke_input:int = 1
 var coke_pack_op:int = 1
@@ -1540,7 +1569,7 @@ func coke_demanded():
 	kill_switch.start()
 	var button:Button = Button.new()
 	var name_picked:int = randi_range(0, names.size() - 1)
-	var raw_price:float = demanded * coke_price * randf_range(0.9, 1.15)
+	var raw_price:float = demanded * coke_price * randf_range(0.85, 1.1)
 	var price:int = round(raw_price)
 	button.text = "%s: %dx Cocaine for $%d" % [names[name_picked], demanded, price]
 	button.theme = load("res://UI/sale_coke.tres") as Theme
@@ -1553,11 +1582,20 @@ func coke_demanded():
 func refresh_coke_timer():
 	var low:int = randi_range(40,50)
 	var high:int = randi_range(50,60)
+	var time_edited:bool = false
 	coke_demandTimer.wait_time = randi_range(low,high)
-	if (coke_demand - coke_sold_today) >= (coke_demand * .65):
+	if (coke_demand - coke_sold_today) >= (coke_demand * .65) and time_edited != true:
 		coke_demandTimer.wait_time /= 2
-	if (coke_demand - coke_sold_today) >= (coke_demand * .5) and (coke_demand - coke_sold_today) < (coke_demand * .65):
+		time_edited = true
+	if coke_packaged > 250 and time_edited != true:
+		coke_demandTimer.wait_time /= 2
+		time_edited = true
+	if (coke_demand - coke_sold_today) >= (coke_demand * .5) and time_edited != true:
 		coke_demandTimer.wait_time /= 1.5
+		time_edited = true
+	if coke_packaged > 100 and time_edited != true:
+		coke_demandTimer.wait_time /= 1.5
+		time_edited = true
 	coke_demandTimer.start()
 
 func sale_missed_coke(button: Button, kill_switch: Timer):
@@ -1807,3 +1845,69 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Research"):
 		exit_ui()
 		open_research()
+
+# SUPER BULK:
+@onready var kush_sb: Button = $SUPER_Menu/VBoxContainer/KUSH_sb
+@onready var purp_sb: Button = $SUPER_Menu/VBoxContainer/PURP_sb
+@onready var meth_sb: Button = $SUPER_Menu/VBoxContainer/METH_sb
+@onready var coke_sb: Button = $SUPER_Menu/VBoxContainer/COKE_sb
+@onready var super_menu: Panel = $SUPER_Menu
+var demanded_g_s:int
+var demanded_p_s:int
+var demanded_m_s:int
+var demanded_c_s:int
+var price_g_s:int
+var price_p_s:int
+var price_m_s:int 
+var price_c_s:int
+
+func _on_bulk_2_pressed() -> void:
+	soundfx(2)
+	bulk_menu.hide()
+	super_menu.show()
+
+func refresh_sb():
+	demanded_g_s = randi_range(40,60)
+	demanded_p_s = randi_range(40,60)
+	demanded_m_s = randi_range(40,60)
+	demanded_c_s = randi_range(40,60)
+	price_g_s = demanded_g * green_sale_price * 0.7
+	price_p_s = demanded_p * PURP_sale_price * 0.7
+	price_m_s = demanded_m * crystal_price * 0.7
+	price_c_s = demanded_c * coke_price * 0.7
+	kush_sb.text = str(demanded_g_s) + "x Kush for $" + str(price_g_s)
+	purp_sb.text = str(demanded_p_s) + "x Purple K. for $" + str(price_p_s)
+	meth_sb.text = str(demanded_m_s) + "x Meth for $" + str(price_m_s)
+	coke_sb.text = str(demanded_c_s) + "x Cocaine for $" + str(price_c_s)
+	kush_sb.disabled = false
+	purp_sb.disabled = false
+	meth_sb.disabled = false
+	coke_sb.disabled = false
+
+func kush_bulk_s():
+	if green_packaged >= demanded_g_s:
+		green_packaged -= demanded_g_s
+		money += price_g_s
+		kush_sb.disabled = true
+		soundfx(1)
+
+func purp_bulk_s():
+	if purp_packaged >= demanded_p_s:
+		purp_packaged -= demanded_p_s
+		money += price_p_s
+		purp_sb.disabled = true
+		soundfx(1)
+
+func meth_bulk_s():
+	if meth_packaged >= demanded_m_s:
+		meth_packaged -= demanded_m_s
+		money += price_m_s
+		meth_sb.disabled = true
+		soundfx(1)
+
+func coke_bulk_s():
+	if coke_packaged >= demanded_c_s:
+		coke_packaged -= demanded_c_s
+		money += price_c_s
+		coke_sb.disabled = true
+		soundfx(1)

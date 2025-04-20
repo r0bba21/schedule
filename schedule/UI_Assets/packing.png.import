@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n4wnc0457wso"
-path="res://.godot/imported/padlock.png-3085155d600355cf1112acc1bd2bdba1.ctex"
+uid="uid://ca8riky5n34vs"
+path="res://.godot/imported/packing.png-0ab125efccd26c5074e604deeaed0dd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Assets/padlock.png"
-dest_files=["res://.godot/imported/padlock.png-3085155d600355cf1112acc1bd2bdba1.ctex"]
+source_file="res://UI_Assets/packing.png"
+dest_files=["res://.godot/imported/packing.png-0ab125efccd26c5074e604deeaed0dd6.ctex"]
 
 [params]
 
